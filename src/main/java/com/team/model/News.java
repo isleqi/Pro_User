@@ -5,11 +5,13 @@ public class News {
 	private String date;
 	private String dec;
 	private String img_url;
-	public News(String title,String date,String dec,String img_url) {
+	private String news_url;
+	public News(String title,String date,String dec,String img_url,String news_url) {
 		this.title=title;
 		this.date=date;
 		this.dec=dec;
 		this.img_url=img_url;
+		this.news_url=news_url;
 	}
 	
 	public void setTitle(String title) {
@@ -39,6 +41,12 @@ public class News {
 	
 	public String getImg_url() {
 		return img_url;
+	}
+	public void setNews_url(String news_url) {
+		this.news_url=news_url;
+	}
+	public String getNews_url() {
+		return news_url;
 	}
 
 }

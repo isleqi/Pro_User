@@ -10,24 +10,18 @@ import java.util.ArrayList;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import com.team.model.News;
 
 @Service
-public class Acquire {
+public class Details {
 	
-	public ArrayList get_info(String url) {
-		System.out.println("!!!!!");
-		
+	public String  get_details(String url) {
 		String html=httpRequest(url);
-
 		return htmlFiter(html);
-		
 	}
-	
 	public  String httpRequest(String requestUrl) {
 		StringBuffer buffer=null;
 		BufferedReader reader=null;
@@ -119,51 +113,16 @@ public class Acquire {
 	
 	}
 	
-	public  ArrayList htmlFiter(String html) {
-		ArrayList<News> items=new ArrayList<>();
-		
+	public  String  htmlFiter(String html) {
 		Document d=Jsoup.parse(html);
-		Elements e=d.select(".clearfix.item");
-		System.out.println(e.size());
-		for(int i=0;i<e.size();i++) {
-			Document dd=Jsoup.parse(e.get(i).toString());
-			String img_url=dd.select("p").select("a").select("img").attr("src");
-			img_url="http://www.chinairn.com"+img_url;
-			
-			String title=dd.select(".i_txt").select("h2").text();
-			
-			String date=dd.select(".date").select("em").text();
-			
-			String dec=dd.select(".dec").text();
-			
-			String news_url=dd.select(".i_txt").select("h2").select("a").attr("href");
-			
-			News item=new News(title,date,dec,img_url,news_url);
-			
-			items.add(item);
-			
-			//System.out.println(title+"  "+date+"  "+dec);
-		}
-		
-		return items;
-		
+		Document dd=Jsoup.parse(d.select(".bw.wbg.pt30").select(".sw.clearfix").select(".col_l.irnpage_main.irndt").toString());
+		String content="<dl class=\".mt3 irndt_cont\">"+dd.select(".mt3.irndt_cont").html()+"</dl>";
+		String title="<h1 class=\"mt3\">"+d.select("h1").html()+"</h1>";
+		String msg="<ul class=\"mt3 clearfix irndt_msg\">"+d.select(".mt3.clearfix.irndt_msg").select(".col_l.irndt_date").html()+"</ul>";
+		String ans="<div class=\"bw wbg pt30\">\r\n" + 
+				"        <div class=\"sw clearfix\">\r\n" + 
+				"            <div class=\"col_l irnpage_main irndt\">"+title+msg+content+"</div></div></div>";
+		return ans;
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

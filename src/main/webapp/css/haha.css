@@ -1,0 +1,46 @@
+.sw {
+    width: 1200px;
+    margin: 0 auto;
+}
+.irnpage_main {
+    width: 830px;
+}
+.col_l {
+    float: left;
+    margin-left: 80px;
+}
+.mt3 {
+    margin: 30px 0 0 0;
+}
+.clearfix {
+}
+.irndt_loc, .irndt_loc a, .irndt_msg {
+    color: #bbb;
+}
+.irndt_date em, .irndt_date b, .iirndt_date span, .irndt_date i {
+    float: left;
+    display: inline-block;
+    margin: 0 20px 0 0;
+    font-weight: normal;
+}
+.irndt_rd {
+    background: #fafafa url(../image/irndt_left.png) no-repeat 0 0;
+    padding: 22px 0 0 40px;
+    color: #999;
+    line-height: 24px;
+}
+.mt2 {
+    margin: 20px 0 0 0;
+}
+.irndt_cont dd p {
+    padding-bottom: 20px;
+}
+.irndt h1 {
+    line-height: 34px;
+    font-size: 30px;
+    font-weight: normal;
+}
+.irndt_cont dd {
+    font-size: 18px;
+    line-height: 38px;
+}
