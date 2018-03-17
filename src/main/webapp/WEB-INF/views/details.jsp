@@ -93,8 +93,8 @@
     <a href="javascript: void 0;" class="mobile-menu-btn" id="mobileMenuBtn"><span class="icon icon-menu"></span></a>
     
     <a class="searchBtn search-btn-mobile" ><span class="icon icon-search"></span></a>
-    <form class="search" action="" method="GET">
-        <input class="search-content" type="text" placeholder="" name="word" autocomplete="off" value="">
+    <form class="search" action="search" method="GET">
+        <input class="search-content" type="text" placeholder="" name="dec" autocomplete="off" value="">
         <div class="search-sug sug"></div>
     </form>
     
