@@ -173,10 +173,10 @@
         
        
         
-        <form class="search" action="" method="GET">
+        <form class="search" action="search" method="GET">
         
         
-            <input class="search-content" autocomplete="off" type="text" placeholder="搜资讯" value="" name="word">
+            <input class="search-content" autocomplete="off" type="text" placeholder="搜资讯" value="" name="dec">
             <div class="search-sug sug"></div>
             <button class="search-btn icon icon-search" type="submit"></button>
         </form>
@@ -184,8 +184,8 @@
     </div>
 </div>
     
-    <%! String type; String url;%>
-    <%type=(String)request.getAttribute("type"); url=(String)request.getAttribute("url");%>
+    <%! String dec;%>
+    <%dec=(String)request.getAttribute("dec"); %>
 <div class="container ">
     
 <div class="topic-menu-wrap">
@@ -194,8 +194,8 @@
         
         <div class="crumb">
             <h2>
-                <input id='url' value=<%=url %> type="hidden"></input>
-                <a id='type' ><%=type %></a><i class="icon icon-go"></i>
+                <input id='dec' value=<%=dec %> type="hidden"></input>
+                <a id='type' >关于‘<%=dec %>’的搜索结果</a><i class="icon icon-go"></i>
                 
             </h2>
             
@@ -301,15 +301,12 @@ var current_user = {"avatar": "//media.zaih.com/Fh8J1Fi5s-dN1IasJlJ12wpJKOsa", "
 
  <script>
  var currentpage=1;
- var type_url;
- var type;
- var temp;
+	var dec=$("#dec").val();
  
 $(document).ready(function (){
-	var url=$('#url').val();
-	//alert(url);
-   get_info(url);
-   currentpage=1;
+	//alert("111");
+    get_info(dec,currentpage);
+	
 });
 
 
@@ -319,112 +316,75 @@ $(document).ready(function (){
      function goto_page(action){
          //alert(action);
         flag=false;
+        var dec=$("#dec").val();
             if(action=='pre'){
                      if(currentpage>1){
                      currentpage=currentpage-1;
-                     if(type=='hangye')  var url=type_url+temp+"-"+currentpage+".html";
-                     else {
-                         if(type=='hyzx')
-                         var url=type_url+'/moref8fff'+currentpage+".html";
-                         else
-                             var url=type_url+'/moref21fff'+currentpage+".html";
                          }
-                     get_info(url);
-                     }
+                     get_info(dec,currentpage);
+                     
                 }
             else if(action=='next'){
             	if(currentpage<20){
                     currentpage=currentpage+1;
-                    if(type=='hangye')  var url=type_url+temp+"-"+currentpage+".html";
-                    else {
-                        if(type=='hyzx')
-                        var url=type_url+'/moref8fff'+currentpage+".html";
-                        else
-                            var url=type_url+'/moref21fff'+currentpage+".html";
+                    
                         }
-            	 get_info(url);
-                           
-                }
+                get_info(dec,currentpage);
+                
             }
                 
             else if(action=='first'){
                         currentpage=1;
-                        if(type=='hangye')  var url=type_url+temp+"-"+currentpage+".html";
-                        else {
-                            if(type=='hyzx')
-                            var url=type_url+'/moref8fff'+currentpage+".html";
-                            else
-                                var url=type_url+'/moref21fff'+currentpage+".html";
-                            }
-                        get_info(url);
+                       
+                            
+                        get_info(dec,currentpage);
                 }
             else{
                 currentpage=20;
-                if(type=='hangye')  var url=type_url+temp+"-"+currentpage+".html";
-                else {
-                    if(type=='hyzx')
-                    var url=type_url+'/moref8fff'+currentpage+".html";
-                    else
-                        var url=type_url+'/moref21fff'+currentpage+".html";
-                    }
-               
-                                get_info(url);
+              
+                get_info(dec,currentpage);
                 }
 
          }
 
-     function get_info(url){
+     function get_info(dec,currentpage){
         
-        // alert("!!!");
-       // alert(url);
-       type_url=url.substring(0,url.lastIndexOf("/"));
-       if(flag)
-       temp=url.substring(url.lastIndexOf("/"),url.lastIndexOf('.'));
-       flag=true;
-       
-       //alert(temp);
-       type=url.split('/')[3];
-       
-       if(url.indexOf('-')==-1&&type=='hangye')
-           currentpage=1;
-       
-      // alert(type_url); 
-      // alert(type); 
-         var json={'url':url};
-         var item='<ul class="topic-list topics">';
-         
-             $.ajax({
-                          data:json,
-                          url:"get_news",
-                          type:"post",
-                          dataType: "json",
-                          success:function(data){
-                             // alert("!!!!");
-                              //alert(JSON.stringify(data));
-                             // alert(item);
-                               for(var i=0;i<data.length;i++){
-                            	  item=item+'<li class="a-topic"><a href="details?url='+data[i].news_url+'"  class="topic-tutor-link" target="_blank"><span class="topic-tutor-pic" style="background-image : url('
-                                	  +data[i].img_url+')"></span> <div class="topic-info"> <h3 class="topic-title"> <span class="topic-title-txt">'
-                                	  +data[i].title+'</span></h3> <div><p class="date"><em>'
-                                	  +data[i].date+'</em><span></span></p><p class="dec">'
-                                	  +data[i].dec+'</p></div></div></a></li>';
+    	 var json={'dec':dec,'id':currentpage};
+    	 var item='<ul class="topic-list topics">';
+    	//alert(dec);
+    	$.ajax({
+                 data:json,
+                 type:"post",
+                 dataType: "json",
+                 url:"get_result",
+                 success:function(data){
+                     //alert("@@@");
+                     //alert(data.length);
+                	 for(var i=0;i<data.length;i++){
+                    	 //alert(data[i].news_url);
+                		  item=item+'<li class="a-topic"><a href="details?url='+data[i].news_url+'"  class="topic-tutor-link" target="_blank"><span class="topic-tutor-pic" style="background-image : url('
+                    	  +data[i].img_url+')"></span> <div class="topic-info"> <h3 class="topic-title"> <span class="topic-title-txt">'
+                    	  +data[i].title+'</span></h3> <div><p class="date"><em>'
+                    	  +data[i].date+'</em><span></span></p><p class="dec">'
+                    	  +data[i].dec+'</p></div></div></a></li>';
 
-                                	  //alert(item);
-                                	  
-                            	
-                                  }
-                          
-                               item=item+"</ul>";
-                               
-                               //alert(item);
-                               $(".content").html(item); 
-                               $('#page1').show();
-
-                              }
-                          
+                       	  //alert(item);
+                       	  
+                   	
+                         }
+                 
+                      item=item+"</ul>";
+                      
+                      //alert(item);
+                      $(".content").html(item); 
+                      $('#page1').show();
 
 
-                  });
+                     }
+
+
+    		}); 
+       currentpage=1;
          }
 
 

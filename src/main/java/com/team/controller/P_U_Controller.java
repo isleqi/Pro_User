@@ -1,5 +1,7 @@
 package com.team.controller;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +22,8 @@ public class P_U_Controller {
 	Acquire acquire;
 	@Autowired
 	Details details;
+	@Autowired
+	Search search;
 	
 	@RequestMapping(value="/industry_news")
 	public String industry_news (HttpServletRequest request,Model model) {
@@ -64,5 +68,37 @@ public class P_U_Controller {
 		model.addAttribute("url", "http://www.chinairn.com/data/moref21fff1.html");
 		return "acquire";
 	}
+	
+	@RequestMapping(value="/search")
+	public String search(HttpServletRequest request,Model model) {
+		String dec=request.getParameter("dec");
+		model.addAttribute("dec", dec);
+		return "search";
+	} 
+	
+	@RequestMapping(value="/get_result",method=RequestMethod.POST)
+	@ResponseBody
+	public ArrayList<News> get_result(String dec,String id) throws IOException{
+		//System.out.println(dec);
+		ArrayList<News> a=search.get_result(dec,id);
+		for (News news : a) {
+			System.out.println(news.getTitle()+"  "+news.getDate()+"  "+news.getDec()+"  "+news.getImg_url()+"  "+news.getNews_url());
+		}
+		return a;
+	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
