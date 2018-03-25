@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.team.model.News;
 
-@Service
+@Service                                         //获取文章详情页
 public class Details extends Url_connect{
 	
 	public String  get_details(String url) {

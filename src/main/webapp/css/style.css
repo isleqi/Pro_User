@@ -1,0 +1,389 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+body, input, textarea {
+    font: 12px "Microsoft Yahei";
+}
+
+body {
+    background: #F6F6F6;
+}
+
+.form_style {
+    width: 270px;
+    height: 498px;
+    margin: 5% auto;
+    border: solid 1px #ccc;
+    padding: 67px 52px;
+    background-color: #fff;
+}
+
+.form_style_m {
+    width: 270px;
+    height: 498px;
+    margin: 10% auto;
+    border: none;
+    background-color: #fff;
+}
+
+img {
+    border: 0;
+}
+
+input {
+    outline: none;
+}
+
+.a_link {
+    color: #416EAF;
+}
+
+    .a_link:hover {
+        color: #5b8bc3;
+    }
+
+    .a_link:active {
+        color: #3a639e;
+    }
+
+/* ������ʾ */
+
+.error_msg, .avater_qq_msg {
+    display: none;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.error_mask, .aq_mask {
+    width: 100%;
+    height: 100%;
+    background-color: #7d7d7d;
+    opacity: 0.5;
+}
+
+.error_content, .aq_content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 290px;
+    height: 178px;
+    margin-left: -145px;
+    margin-top: -89px;
+    background-color: #fff;
+    border: solid #efefef 1px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.error_img {
+    margin-top: 24px;
+}
+
+.error_text {
+    font-size: 16px;
+    margin: 25px;
+}
+
+.error_text_ok {
+    color: #51C233;
+}
+
+.error_text_error {
+    color: #C1362D;
+}
+
+.error_text_info {
+    color: #416EAF;
+}
+
+.aq_img {
+    margin-top: 15px;
+}
+
+.aq_text {
+    font-size: 16px;
+    margin: 15px;
+    margin-top: 33px;
+}
+
+.aq_backbtn, .aq_savebtn {
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    color: #ccc;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 10px 10px 0px 10px;
+    border: solid 1px;
+    border-radius: 20px;
+    border-color: #ccc;
+    float: left;
+}
+
+.aq_savebtn {
+    color: #51C233;
+    border-color: #51C233;
+    float: right;
+}
+
+/* �û���¼ */
+
+#rm_login, #rm_userinfo, #rm_forgetpassword {
+}
+
+.txtAccount {
+    font-size: 13px;
+    margin-top: 13px;
+    color: #666;
+    text-align: center;
+}
+
+.product {
+    margin-top: 17px;
+}
+
+.qiyuproduct {
+    margin: 0px 5px;
+}
+
+#login_panel {
+    text-align: left;
+    z-index: 10000;
+    height: 326px;
+}
+
+.userinput_parent {
+    height: 65px;
+    border-bottom: solid 1px;
+    border-bottom-color: #ccc;
+}
+
+.user_input_text {
+    color: #416EAF;
+    padding-top: 11px;
+    text-align: left;
+}
+
+.user_input {
+    margin: 8px 5px 0px 0px;
+    width: 270px;
+    outline: none;
+    border: none;
+    font-size: 14px;
+    color: #888;
+}
+
+.user_pw {
+    width: 200px;
+}
+
+.forgotpsw {
+    float: right;
+    margin-top: 37px;
+    color: #416EAF;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.remember_me_link {
+    float: left;
+    cursor: pointer;
+}
+
+.remember_me {
+    float: left;
+    color: #416EAF;
+    padding-left: 4px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.reg_now_img {
+    float: right;
+    cursor: pointer;
+}
+
+.reg_now {
+    float: right;
+    color: #416EAF;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.one_press_login_img {
+    position: relative;
+    top: 9px;
+}
+
+.one_press_login {
+    width: 270px;
+    color: #8A8A8A;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#openplat {
+    text-align: center;
+}
+
+.openplaticon {
+    opacity: 1.0;
+}
+
+    .openplaticon:hover {
+        opacity: 0.8;
+    }
+
+    .openplaticon:active {
+        opacity: 1.0;
+    }
+
+.taobaologin_parent {
+    margin-left: 20px;
+}
+
+.wxlogin_parent {
+    margin: 0px 20px;
+}
+
+/*�û�ע��*/
+
+#reg_panel {
+    padding-top: 1px;
+    height: 325px;
+}
+
+.no_border {
+    border: none;
+}
+
+.code_parent {
+    float: left;
+    width: 144px;
+    height: 64px;
+    border-bottom: solid 1px;
+    border-bottom-color: #ccc;
+}
+
+.blue_border {
+    border-bottom-color: #416EAF;
+}
+
+.validate_input {
+    width: 190px;
+}
+
+.code_input {
+    width: 140px;
+}
+
+.sendsms {
+    float: right;
+    width: 108px;
+    height: 43px;
+    line-height: 43px;
+    margin-top: 17px;
+    border-radius: 22px;
+    text-decoration: none;
+    text-align: center;
+}
+
+    .sendsms:hover {
+        border-color: #5b8bc3;
+    }
+
+    .sendsms:active {
+        border-color: #3a639e;
+    }
+
+.sendsms_disable {
+    cursor: default;
+    color: #8A8A8A;
+    border: solid 1px #CACACA;
+    border-radius: 22px;
+}
+
+.sendsms_enable {
+    cursor: pointer;
+    color: #687597;
+    border: solid 1px #687597;
+    border-radius: 22px;
+}
+
+.loginbtn, .regbtn, .save_user_info, .fp_nextbtn, .fp_save_psw {
+    width: 271px;
+    height: 45px;
+    line-height: 45px;
+    background-color: #416EAF;
+    border-radius: 22px;
+    border: none;
+    font-size: 16px;
+    color: #F4FFFF;
+    margin-top: 19px;
+    margin-bottom: 17px;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+}
+
+    .loginbtn:hover, .regbtn:hover, .save_user_info:hover, .fp_nextbtn:hover, .fp_save_psw:hover {
+        background-color: #5b8bc3;
+    }
+
+    .loginbtn:active, .regbtn:active, .save_user_info:active, .fp_nextbtn:active, .fp_save_psw:active {
+        background-color: #3a639e;
+    }
+
+    .loginbtn:disabled, .regbtn:disabled, .save_user_info:disabled, .fp_nextbtn:disabled, .fp_save_psw:disabled {
+        background-color: #ddd;
+    }
+
+.login_now {
+    cursor: pointer;
+    margin-left: 57px;
+}
+
+/*�û���Ϣ*/
+
+.avater_parent {
+    text-align: center;
+}
+
+.avater {
+    cursor: pointer;
+    margin: auto;
+}
+
+.txtUserInfo {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/*��������*/
+
+.fp_title {
+    font-size: 22px;
+    color: #416EAF;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.fp_backbtn_parent {
+    text-align: center;
+}
+
+.fp_backbtn {
+    color: #416EAF;
+    text-decoration: none;
+    text-align: center;
+}

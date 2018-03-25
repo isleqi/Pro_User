@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.mapping.DemandMap">
+
+<insert id="insertDemand" parameterType="com.team.model.Demand">
+insert into demand(author,title,contend) values(#{author},#{title},#{contend})
+</insert>
+
+<select id="get_demand" resultMap="get_demand_user">
+select * from demand d,users u where d.account=users.account
+</select>
+
+<select id="getDemand_industry" resultMap="get_demand_user">
+select * from demand d,users u where d.account=users.account and d.industry=#{industry}
+</select>
+
+
+<resultMap type="com.team.model.Demand" id="get_demand_user">
+<id property="id" column="id"/>
+<association property="user" column="account" javaType="com.team.model.Users">
+<id property="name" column="name" ></id>
+<result property="tx_src" column="tx_src"/>
+<result property="phone" column="phone"/>
+<result property="industry" column="industry"/>
+</association>
+
+</resultMap>
+
+</mapper>

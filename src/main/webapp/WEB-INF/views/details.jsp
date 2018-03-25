@@ -179,10 +179,10 @@
         
        
         
-        <form class="search" action="" method="GET">
+        <form class="search" action="search" method="GET">
         
         
-            <input class="search-content" autocomplete="off" type="text" placeholder="搜资讯" value="" name="word">
+            <input class="search-content" autocomplete="off" type="text" placeholder="搜资讯" value="" name="dec">
             <div class="search-sug sug"></div>
             <button class="search-btn icon icon-search" type="submit"></button>
         </form>

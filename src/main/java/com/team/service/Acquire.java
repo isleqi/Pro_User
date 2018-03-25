@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 
 import com.team.model.News;
 
-@Service
+@Service                                             //获取资讯或者数据
 public class Acquire extends Url_connect {
 	
 	public ArrayList get_info(String url) {

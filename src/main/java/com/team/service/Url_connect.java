@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public abstract class Url_connect {
+public abstract class Url_connect {                                  //获取url连接
 	
 	public  String httpRequest(String requestUrl) {
 		StringBuffer buffer=null;

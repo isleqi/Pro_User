@@ -21,7 +21,7 @@ import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.*;
-@Service
+@Service                                       //搜索资讯或者数据
 public class Search extends Url_connect{
 	public ArrayList<News> get_result(String dec,String id) throws IOException  {
 		String d=URLEncoder.encode(dec, "utf-8");
