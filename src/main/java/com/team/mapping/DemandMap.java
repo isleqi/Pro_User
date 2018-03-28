@@ -12,7 +12,7 @@ import com.team.model.Demand;
 public interface DemandMap {
 	public void insertDemand(Demand demand);    //插入需求
 	
-	public ArrayList<Demand> getDemand();   //得到全部需求
+	public ArrayList<Demand> get_Demand();   //得到全部需求
 	
 	public ArrayList<Demand> Demand_industry(String industry);   //根据行业得到需求
 

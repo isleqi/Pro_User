@@ -1,0 +1,204 @@
+.csdn-bbs .detailed table {
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05);
+    margin: 8px 0;
+    border: 1px solid #ddd;
+}
+.csdn-bbs table {
+    border-collapse: separate;
+}
+
+.csdn-bbs .wraper {
+    width: 960px;
+    margin: 70px auto;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-weight: 400;
+    vertical-align: baseline;
+    background: 0 0;
+    max-width: 100%;
+       display: table;
+   
+    border-spacing: 2px;
+    border-color: grey;
+} 
+
+.csdn-bbs .detailed table .wirter {
+    text-align: center;
+    max-width: 180px;
+    background: #eff4fb;
+    border-right: 1px solid #ddd;
+}
+
+.csdn-bbs body, .csdn-bbs div, .csdn-bbs label, .csdn-bbs dl, .csdn-bbs dt, .csdn-bbs dd, .csdn-bbs ul, .csdn-bbs li, .csdn-bbs h1, .csdn-bbs h2, .csdn-bbs h3, .csdn-bbs h4, .csdn-bbs h5, .csdn-bbs h6, .csdn-bbs pre, .csdn-bbs code, .csdn-bbs form, .csdn-bbs fieldset, .csdn-bbs legend, .csdn-bbs p, .csdn-bbs blockquote, .csdn-bbs th, .csdn-bbs td {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: 0 none;
+} 
+.csdn-bbs *, .csdn-bbs *:before, .csdn-bbs *:after {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+td, td img {
+    vertical-align: top;
+}
+td {
+    font-weight: 400;
+    font-size: 100%;
+    display: table-cell;
+}
+
+.csdn-bbs .detailed table .user_info {
+    margin: 0 auto;
+    padding: 8px;
+    text-align: center;
+} 
+.csdn-bbs dl,.csdn-bbs .detailed table .user_head {
+    position: relative;
+}
+
+
+
+.csdn-bbs .detailed table .user_head {
+    position: relative;
+}
+.csdn-bbs dt, .csdn-bbs dd {
+    font-weight: normal;
+    line-height: 18px;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.csdn-bbs .detailed table .user_info {
+    margin: 0 auto;
+    padding: 8px;
+    text-align: center;
+}
+.csdn-bbs .user_material {
+    background: url(layer_bg.png);
+    border-radius: 4px;
+    width: 284px;
+    height: 218px;
+    position: absolute;
+    right: -181px;
+    top: -9px;
+    z-index: 1002;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+}
+.csdn-bbs .user_material_bg {
+    background: #fff;
+    border: 1px #ddd solid;
+    width: 260px;
+    height: 200px;
+    position: relative;
+    padding: 8px 11px;
+}
+
+.csdn-bbs .user_material dd {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 24px;
+}
+.csdn-bbs .post .username {
+    font-weight: bold;
+}
+.csdn-bbs .username {
+    margin-top: 6px;
+}
+.csdn-bbs div.post_body {
+    width: 758px;
+}
+.csdn-bbs .post_body {
+    word-wrap: break-word;
+    overflow: hidden;
+    padding: 16px;
+    font-size: 14px;
+    line-height: 28px;
+}
+.csdn-bbs *, .csdn-bbs *:before, .csdn-bbs *:after {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+dl {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+dl {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+div {
+    display: block;
+}
+.csdn-bbs .detail_title h1 {
+    float: left;
+    font-size: 18px;
+    line-height: 36px;
+    width: 730px;
+    word-break: break-all;
+    word-wrap: break-word;
+        font-weight: bold;
+    
+}
+.csdn-bbs #topics-show .detail_title h1 {
+    font-weight: bold;
+}
+.csdn-bbs .detail_title {
+    margin: 0 0 10px 0;
+    padding: 5px 10px;
+    background:rgba(57, 59, 62, 0.85);
+    color: #fff;
+    overflow: hidden;
+    display: block;
+    margin: 0 0 16px 0;
+}
+.csdn-bbs .detailed table .control {
+    height: 28px;
+    border-top: 1px solid #A9CBEE;
+    padding: 0 10px;
+    line-height: 28px;
+    background: #ffffff;
+    border-top: 1px solid #ddd;
+    font-size: 14px;
+    color: #999;
+}
+.csdn-bbs .fr {
+    float: right;
+}
+.csdn-bbs .detailed table .control a {
+    margin: 0 2px;
+    color: #666;
+}
+.csdn-bbs a:link, .csdn-bbs a:visited {
+    color: #335aa4;
+    text-decoration: none;
+}
+
+
+
+
+
+

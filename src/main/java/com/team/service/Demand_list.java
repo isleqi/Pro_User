@@ -15,7 +15,7 @@ public class Demand_list {
 	
 	public ArrayList<Demand> get_demand(){               //得到全部需求
 		ArrayList<Demand> ans=new ArrayList<>();
-		ans=demandmap.getDemand();
+		ans=demandmap.get_Demand();
 		return ans;
 	}
 	

@@ -139,7 +139,6 @@ display: block;
                
                  <div class="qq" style="text-align: center;">
           <div  class="ww"><a style="cursor: pointer;" onclick="out()">退出</a></div>
-                    <div  class="ww"><a style="cursor: pointer;" onclick="out()">退出</a></div>
           
          
         
@@ -150,7 +149,7 @@ display: block;
                       
            
           <%--  <%if((int)session.getAttribute("type")==0){ %> --%>
-                      <div style="display: inline-block;"><a href="publish">发贴 </a></div>
+                      <div style="display: inline-block;"><a href="publish_post">发贴 </a></div>
           
             <div style="display: inline-block;"><a href="publish">发布需求 </a></div>
           <%--   <%}else{ %>

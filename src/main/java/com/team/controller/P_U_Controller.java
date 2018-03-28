@@ -28,6 +28,7 @@ import com.team.mapping.StudentMap;
 import com.team.mapping.UsersMap;
 import com.team.model.Demand;
 import com.team.model.News;
+import com.team.model.Post;
 import com.team.model.Student;
 import com.team.model.Users;
 import com.team.service.*;
@@ -45,6 +46,15 @@ public class P_U_Controller {
 	MailUtil mailuitl;      //发送邮件
 	@Autowired
 	Demand_list demand_list;   //获取需求
+	@Autowired
+	Publish_demand publish_demand;     //发布需求
+	@Autowired
+	Publish_post publish_post;       //发布帖子
+	@Autowired
+	Post_list post_list;            //获取帖子
+	
+	
+	
 	
 	//数据库层注入
 	@Autowired
@@ -231,7 +241,9 @@ public class P_U_Controller {
 	
 	//跳转论坛界面
 	@RequestMapping(value="/forum")
-	public String forum() {
+	public String forum(HttpServletRequest request,Model model) {
+		String type="论坛";
+		model.addAttribute("type", type);
 		return "forum";
 	}
 	
@@ -241,6 +253,8 @@ public class P_U_Controller {
 	public String publish() {
 		return "publish";
 	}
+	
+	
 	
 	//跳转到需求或者观点页面
 	@RequestMapping(value="/demand_view")                                    
@@ -255,7 +269,9 @@ public class P_U_Controller {
 	@RequestMapping(value="/get_demand")
 	@ResponseBody
 	public ArrayList<Demand> get_demand(){
-		return demand_list.get_demand();
+		ArrayList<Demand> ans=demand_list.get_demand();
+		System.out.println(ans.get(0).getUsers().getTx_src());
+		return ans;
 		
 	}
 	
@@ -273,15 +289,49 @@ public class P_U_Controller {
 		return demand_list.demand_industry(industry);
 	}
 	
-	
-	@RequestMapping(value="/publish_demand")                               //发布需求
+	//发布需求
+	@RequestMapping(value="/publish_demand",method=RequestMethod.POST,produces={"text/html;charset=UTF-8;","application/json;"})                               //发布需求
 	@ResponseBody
 	public String publish_demand(String account,String content,String title,String industry) {
-		
-		return "";
+		Demand demand=new Demand(account,title,content,industry);
+	   publish_demand.insert_demand(demand);
+		return "发布成功";
 	}
 	
+	//跳转发贴页面
+	@RequestMapping(value="/publish_post")
+	public String publish_post() {
+		
+		return "publish_post";
+	}
 	
+	//发布帖子
+	@RequestMapping(value="/p_post",method=RequestMethod.POST,produces={"text/html;charset=UTF-8;","application/json;"})
+	@ResponseBody
+	public String p_post(String account,String title,String content) {
+		Post post=new Post(account,title,content);
+		publish_post.insert_post(post);
+		return "发布成功";
+	}
+	
+	@RequestMapping(value="/get_posts")
+	@ResponseBody
+	public ArrayList<Post> get_posts(){
+		return post_list.get_posts();
+	}
+	
+	@RequestMapping(value="/post_details")
+	public String post_details(HttpServletRequest request,Model model) {
+		int id=Integer.parseInt(request.getParameter("id"));
+		System.out.println(id);
+		Post post=post_list.get_post(id);
+		model.addAttribute("post", post);
+		return "post_details";
+	}
+/*	
+	@RequestMapping(value="/get_comment_reply")
+	@ResponseBody
+	public */
 
 }
 

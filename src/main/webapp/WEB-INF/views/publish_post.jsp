@@ -83,7 +83,7 @@ display: block;
     function submit(){
     	 editor1.sync();
     	var title=$("#title").val();
-    	var industry=$("#industry").val();
+    	
     	var content=$("#aaa").val();
     	var account=$("#account").val();
     	//alert(title);
@@ -92,10 +92,7 @@ display: block;
                     alert("请输入标题");
                     return;
         	}
-    	if(industry==null||industry==''){
-                alert("请选择行业");
-                return;
-        	}
+    	
     	 if(content==null||content==''){
                    alert("请输入内容");
                    return;
@@ -105,15 +102,15 @@ display: block;
                    return;
         	}
     	//alert(content);
-    	var json={'account':account,'content':content,'title':title,'industry':industry};
+    	var json={'account':account,'content':content,'title':title};
     	$.ajax({
              type:"post",
-             url:"publish_demand",
+             url:"p_post",
                   data:json,
                   dataType: "text",
                   success:function(data){
                         alert(data);
-                        top.location.href="demand_view?kind=demand";
+                        top.location.href="forum";
                       },
               error:function(){
                            alert("cnm");
@@ -261,28 +258,11 @@ display: block;
     <%type=(String)request.getAttribute("type"); url=(String)request.getAttribute("url");%>
 <div class="container" >
 <div class="content">
-<div style="margin-left: 200px;margin-top: 100px;position: relative;"><span>请输入标题</span>
-<input type="text" name="title" id="title" >&nbsp;&nbsp;&nbsp; <span>行业</span>&nbsp;&nbsp;&nbsp;
-<select class="m-wrap  user_input" id="industry"  style="width: 200px; padding: 2px 0;">
-                                                    <option value="0">IT与通讯</option>
-                                                    <option value="1">机器电子</option>
-                                                    <option value="3">医疗医药保健</option>
-                                                    <option value="4">建筑房地产</option>
-                                                    <option value="5">金融保险投资</option>
-                                                    <option value="6">出版传媒包装</option>
-                                                    <option value="7">酒店旅游餐饮</option>
-                                                    <option value="8">零售商贸</option>
-                                                    <option value="9">能源矿产环保</option>
-                                                    <option value="10">石油化工</option>
-                                                    <option value="11">食品饮料酒业</option>
-                                                    <option value="12">家用电器</option>
-                                                    <option value="13">家用日化</option>
-                                                    <option value="14">车辆交通运输</option>
-                                                    <option value="15">其他</option>
-                                                </select>
+<div style="margin-left: 300px;margin-top: 100px;position: relative;"><span>请输入标题</span>
+<input type="text" name="title" id="title" >
 </div>
     <div style="margin-left: 200px;margin-top: 10px;position: relative;">
-    <p style="margin-left: 300px;margin-top: 20px;position: relative;">需求描述</p>
+    <p style="margin-left: 300px;margin-top: 20px;position: relative;">内容</p>
 <textarea name="content" id="aaa" >
 </textarea>  
 </div>

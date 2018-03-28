@@ -284,7 +284,7 @@ function loginbtn_clicked() {
     while (psw.indexOf("+") >= 0) {
         psw = psw.replace("+", "%2B");
     }*/
-alert("55555");
+//alert("55555");
     var json={'account':email,'password':psw,'rememberme':rememberme};
     //发送验证请求
     $.ajax({
@@ -531,7 +531,7 @@ function send_sms_click() {
 
     //发送邮件
     var data = $("#data").val();
-    alert("data  "+data);
+   // alert("data  "+data);
     alert(email.val());
     sendSms(email.val(),function (msg) {
         var type = null;
@@ -565,8 +565,8 @@ function sendSms(email,finish) {
         cache: false,
         data: json,
         success: function (data) {
-        	         alert(data.msg);
-        	         alert(data.code);
+        	         //alert(data.msg);
+        	        // alert(data.code);
                      if(data.code!=0){
                     	 user_code=data.code;
                     msg = "邮箱验证码发送成功！";
@@ -591,12 +591,12 @@ function sendSms(email,finish) {
 function loginnow_clicked() {
     var url = "Login_register.html";
     location.replace(url);
-}
+   
+   }
 
 //获得刷新url
 function getReloadUrl() {
     var url = "Login_register.html";
-    
     return url;
 }
 /*
@@ -615,7 +615,7 @@ function getReturnUrl() {
 }*/
 //注册按钮点击
 function registerbtn_clicked() {
-	alert("sdasdasda");
+	//alert("sdasdasda");
     var email = $('#email');
     var code = $('#code');
     if (!isEmail(email.val())) {
@@ -699,7 +699,7 @@ function registerbtn_clicked() {
 
 //保存用户信息点击
 function save_user_info_clicked() {
-	alert("44444");
+	//alert("44444");
 	var industry=$("#industry").val();
     var userNick = $("#txtUserInfoNickName").val();
     var userPsw = $("#txtUserInfoPsw").val();
@@ -737,7 +737,7 @@ function save_user_info_clicked() {
 //注册账号
 function RegisterUser(account,industry,userNick, userPsw, userPhone,tx_src) {
     var checkcode = $("#code").val();
-alert(account+industry+userNick);
+//alert(account+industry+userNick);
     var oriPsw = userPsw;
 
    /* //密码转义
@@ -763,7 +763,7 @@ alert(account+industry+userNick);
             ShowErrorMessage("注册失败！");
         },
         success: function (data) {
-        	alert(data);
+        	//alert(data);
         	top.location.href="index.jsp"; 
         	
 /*            if (null != data && "" != data) {
@@ -1104,7 +1104,7 @@ function ShowErrorMessage(msg, type) {
     var errimg = $(".error_img");
     if (null != errimg) {
         if (1 == type) {
-            errimg.attr("src", "imag/ok.png");
+            errimg.attr("src", "img/ok.png");
         } else {
             errimg.attr("src", "img/error.png");
         }

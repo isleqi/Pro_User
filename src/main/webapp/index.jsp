@@ -108,9 +108,9 @@
 </div>
 <a href="">专家</a>
 <a href="">机构</a>
-<a href="">论坛</a>
-<a href="">需求</a>
-<a href="">专家观点</a>
+<a href="forum">论坛</a>
+<a href="demand_view?kind=demand">需求</a>
+<a href="demand_view?kind=view">专家观点</a>
 </div>
 <div class="header-more">
 <!-- <div class="header-links-box"><span>帮助</span>

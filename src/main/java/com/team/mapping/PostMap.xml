@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.mapping.PostMap">
+<insert id="insert_post" parameterType="com.team.model.Post">
+insert into post(account,title,content) values(#{account},#{title},#{content})
+</insert>
+
+<select id="get_posts" resultMap="get_post_user">
+select * from post p,users u where p.account=u.account
+</select>
+
+<select id="get_post" resultMap="get_post_user">
+select * from post p,users u where p.account=u.account and p.id=#{id}
+</select>
+
+<resultMap type="com.team.model.Post" id="get_post_user">
+<id property="id" column="id"/>
+<result property="title" column="title" />
+<result property="content" column="content"/>
+<result property="date" column="date"/>
+<association property="user" column="account" javaType="com.team.model.Users">
+<id property="name" column="name" ></id>
+<result property="tx_src" column="tx_src"/>
+</association>
+
+</resultMap>
+
+
+</mapper>

@@ -14,23 +14,41 @@
 
     <link rel="stylesheet" href="css/a488d11a.base.css">
     
-<link rel="stylesheet" href="css/e099c360.topicList.css">
+     <link rel="stylesheet" href="css/e099c360.topicList.css">
 
 <style type="text/css">
 
 .qq {
     display: none;
     position: absolute;
-    padding-top: 9px;
-    padding-bottom: 12px;
-    top: 55px;
+    top: 56px;
     z-index: 99999;
-    background-color: black;
+    background-color: white;
     border-radius: 0 0 4px 4px;
-    width: 100px;
+     width：50px;
+     line-height:30px;
+    
+    
+     
+}
+
+.huoqu:hover .qq{
+display: block;
+
+}
+.qq a{color: black; height: 30px;}
+.ww{      
+    line-height:30px;
+}
+.ww a{
+       line-height:30px;
+        color: black;
 }
 .zone:hover .qq{
 display: block;
+}
+.tc{
+text-align:center;
 }
 
 </style>
@@ -66,15 +84,15 @@ display: block;
         </a>
         <ul class="header-nav">
             <li class="decorate" style="left: 56px; width: 56px;"></li>
-            
-            
-            
-            <li data-action="nav-select" class="drop-more">
-                <a href="" class="active" id="huoqu">获取</a>
-<div class="drop_menu" style="display: none">
-<a href="industry_news">资讯</a>
-<a href="industry_data">数据</a>
-</div>                
+            <li data-action="nav-select" class="huoqu">
+                <a href="" class="active" >获取</a>
+          <div class="qq" style="text-align: center;">
+          <div  class="ww"><a href="industry_news" >资讯</a></div>
+                    <div  class="ww"><a href="industry_data" >数据</a></div>
+          
+         
+        
+         </div>             
             </li>
             
             
@@ -95,15 +113,15 @@ display: block;
             
             
             <li data-action="nav-select">
-                <a href="" class="">论坛</a>
+                <a href="forum" class="">论坛</a>
             </li>
             
               <li data-action="nav-select">
-                <a href="" class="">需求</a>
+                <a href="demand_view?kind=demand" class="">需求</a>
             </li>
             
              <li data-action="nav-select">
-                <a href="" class="">专家观点</a>
+                <a href="demand_view?kind=view" class="">专家观点</a>
             </li>
             
             
@@ -122,29 +140,33 @@ display: block;
             <%if(session.getAttribute("account")!=null) {%>
                  <div  class="zone" style="display: inline-block;">
                  <a href="" >${sessionScope.name}</a>
-                 <div class="qq" >
-          <div style="width: 200px"> <a href="industry_news">资讯</a></div>
-          <div style="width: 200px"> <a href="industry_data">数据</a></div>
-         </ul>
+               
+                 <div class="qq" style="text-align: center;">
+          <div  class="ww"><a style="cursor: pointer;" onclick="out()">退出</a></div>
+          
+         
+        
          </div>
+       
                  
                  </div>
                       
            
           <%--  <%if((int)session.getAttribute("type")==0){ %> --%>
-            <a href="">发布需求 </a>
+                      <div style="display: inline-block;"><a href="publish_post">发贴 </a></div>
+          
+            <div style="display: inline-block;"><a href="publish">发布需求 </a></div>
           <%--   <%}else{ %>
                <a href="">发布观点 </a>
             <%} %>  --%>
-             <a style="cursor: pointer;" onclick="out()">退出</a>
             <%}else{ %>
-                        <a href="">登录</a>
+                        <div><a href="">登录</a></div>
             <%} %>
            
             
         </div>
         
-      
+       
         
        
         
@@ -161,65 +183,103 @@ display: block;
     
     <%! String type; String url;%>
     <%type=(String)request.getAttribute("type"); url=(String)request.getAttribute("url");%>
+    
+    
 <div class="container ">
+        <div class="topic-menu-wrap">
+    <div class="topic-menu">
+        
+        
+        <div class="crumb">
+            <h2>
+                <input id='url' value=<%=url %> type="hidden"></input>
+                <a id='type' ><%=type %></a><i class="icon icon-go"></i>
+                
+            </h2>
+            
+            
+        </div>
+        
+        <div class="price-screen priceScreen">
+            <a class="price-screen-btn priceScreenBtn" href="javascript:void 0;">行业</a>
+            <div class="topic-drop-wrap topicDropWrap">
+                            <div class="topic-sub-menu">
+                    
+                    <ul style="cursor: pointer;">
+                        <li>
+                            <a  onclick="" class="inner" >IT与通信</a>
+                        </li>
+                        <li>
+                            <a  onclick="" class="inner" >机器电子</a>
+                        </li>
+                        <li>
+                            <a  onclick="" class="inner" >医疗医药保健</a>
+                        </li>
+                        <li>
+                            <a  onclick="" class="inner" >建筑房地产</a>
+                    </li>
+                    
+                     <li>
+                            <a  onclick="" class="inner" >金融保险投资</a>
+                    </li>
+                     <li>
+                            <a  onclick="" class="inner" >出版传媒包装</a>
+                    </li>
+                     <li>
+                            <a  onclick="" class="inner" >酒店旅游餐饮</a>
+                    </li>
+                     <li>
+                            <a  onclick="" class="inner" >零售商贸</a>
+                    </li>
+                     <li>
+                            <a  onclick="" class="inner" >能源矿产环保</a>
+                    </li>
+                     <li>
+                            <a  onclick="" class="inner" >石油化工</a>
+                    </li>
+                     <li>
+                            <a  onclick="" class="inner" >食品饮料酒业</a>
+                    </li>
+                     <li>
+                            <a  onclick="" class="inner" >家用电器</a>
+                    </li>
+                     <li>
+                            <a  onclick="" class="inner" >家用日化</a>
+                    </li>
+                    
+                     <li>
+                            <a  onclick="" class="inner" >车辆交通运输</a>
+                    </li>
+                    
+                     <li>
+                            <a  onclick="" class="inner" >其他行业</a>
+                    </li>
+                    
+                    </ul>
+                    
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</div>
     
 
 <div class="content">
-  <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table_list parent_forum ">
-    <colgroup>
-      <col>
-      <col width="60px">
-      <col width="120px">
-      <col width="60px">
-      <col width="120px">
-      <col width="60px">
-    </colgroup>
-    <tbody><tr class="zebra">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table_list parent_forum " id="table">
+  
+    <tbody>
+    <tr class="zebra">
       <th>标题</th>
-      <th class="tc">提问人</th>
-      <th class="tc">时间</th>
+      <th >提问人</th>
+      <th >时间</th>
     </tr>
           
   
 
-          <tr>
-    <td class="title">
-      <strong class="green">？</strong>
-      <a href="/topics/392143486" target="_blank" title="springboot 返回jsp页面的错误  真的逼疯了，">springboot 返回jsp页面的错误  真的逼疯了，</a>
-    </td>
-    <td class="tc">
-      <a href="//my.csdn.net/qq_35587725" rel="nofollow" target="_blank" title="qq_35587725">qq_35587725</a><br>
-      </td>
-    <td class="tc">
-      <span class="time">2018-03-24 13:21</span>
-    </td>
-  </tr>
-  <tr class="zebra">
-    <td class="title">
-      <strong class="green">？</strong>
-      <a href="/topics/392345698" target="_blank" title="关于JAVA前景的一些疑惑，过来人和大佬指点一下哟">关于JAVA前景的一些疑惑，过来人和大佬指点一下哟</a>
-      <span class="forum_link">[<span class="parent"><a href="/forums/Java">Java</a></span> <a href="/forums/JavaOther">Java相关</a>]</span>
-    </td>
-    <td class="tc">
-      <a href="//my.csdn.net/qq_37922457" rel="nofollow" target="_blank" title="ws加油你是最胖的">ws加油你是最胖的</a><br>
-      </td>
-    <td class="tc">
-      <span class="time">2018-03-24 13:12</span>
-    </td>
-  </tr>
-  <tr>
-    <td class="title">
-      <strong class="green">？</strong>
-      <a href="/topics/392344637" target="_blank" title="请教下AbstractMethodError: oracle.jdbc.drive怎么解决啊？急">请教下AbstractMethodError: oracle.jdbc.drive怎么解决啊？急</a>
-    </td>
-    <td class="tc">
-      <a href="//my.csdn.net/qq_39520065" rel="nofollow" target="_blank" title="qq_39520065">qq_39520065</a><br>
-    <td class="tc">
-      <span class="time">2018-03-24 13:05</span>
-    </td>
-  </tr>
 
-  </tbody></table>
+  </tbody>
+  </table>
 </div>    
   
 </div>
@@ -228,13 +288,7 @@ display: block;
 <!-- JavaScript at the bottom for fast page loading -->
 
 
-<script>
-var weixin_mp_config = {"appId": "wx63736776bf28c6b5", "nonceStr": "wuflTNo8oUcu", "signature": "e1440d8146f9b24e81a86f16715035957c66e99f", "timestamp": "1520831665"};
-</script>
 
-<script>
-var current_user = {"avatar": "//media.zaih.com/Fh8J1Fi5s-dN1IasJlJ12wpJKOsa", "followers_count": 0, "id": 85241129, "industry": null, "is_tutor": false, "labels": [], "location": null, "nickname": "-----_30847", "realname": "", "title": null};
-</script>
 
 <script src="js/62c4d7e6.base.js"></script>
 <script src="js/76b4679b.main.js"></script>
@@ -245,10 +299,43 @@ var current_user = {"avatar": "//media.zaih.com/Fh8J1Fi5s-dN1IasJlJ12wpJKOsa", "
  <script>
  
 $(document).ready(function (){
-
+   get_post();
 });
 
+               function get_post(){
 
+                   
+                          $.ajax({
+                                 url:'get_posts',
+                                 type:"post",
+                                 dataType: "json",
+                                 success:function(data){
+                                          // alert(JSON.stringify(data));
+                                                var item='<tbody><tr class="zebra"><th>标题</th> <th >提问人</th> <th >时间</th>   </tr>';
+                                              
+                                                for(var i=0;i<data.length;i++){
+                                              	  item=item+'<tr><td class="title"><strong class="green">？</strong><a href="post_details?id='
+                                              	  +data[i].id+'"target="_blank" >'
+                                              	  +data[i].title+'</a></td><td class="tc"><a href="" rel="nofollow" target="_blank" >'
+                                              	  +data[i].user.name+'</a><br></td><td class="tc"><span class="time">'
+                                              	  +data[i].date+'</span></td></tr>';
+                                                                                          	  
+
+                                                    }
+                                            
+                                                 item=item+"</tbody></table>";
+                                                 
+                                                 //alert(item);
+                                                 $("#table").html(item); 
+                                                 //$('#page1').show();
+                                     },
+                                     error:function(){
+                                               alert("cnm");
+                                         }
+
+                              });
+
+                   }
 
 </script>
 

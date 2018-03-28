@@ -65,7 +65,7 @@ display: block;
     <%kind=request.getParameter("kind"); %>
 
 
-<input type="hidden" name="kind" id="kind" value=<%=kind %>/> 
+<input type="hidden" name="kind" id="kind" value=<%=kind %>>
 
 
 
@@ -114,11 +114,11 @@ display: block;
             </li>
             
               <li data-action="nav-select">
-                <a href="" class="">需求</a>
+                <a href="demand_view?kind=demand" class="">需求</a>
             </li>
             
              <li data-action="nav-select">
-                <a href="" class="">专家观点</a>
+                <a href="demand_view?kind=view" class="">专家观点</a>
             </li>
             
             
@@ -140,7 +140,6 @@ display: block;
                
                  <div class="qq" style="text-align: center;">
           <div  class="ww"><a style="cursor: pointer;" onclick="out()">退出</a></div>
-                    <div  class="ww"><a style="cursor: pointer;" onclick="out()">退出</a></div>
           
          
         
@@ -151,7 +150,7 @@ display: block;
                       
            
           <%--  <%if((int)session.getAttribute("type")==0){ %> --%>
-                      <div style="display: inline-block;"><a href="publish">发贴 </a></div>
+                      <div style="display: inline-block;"><a href="publish_post">发贴 </a></div>
           
             <div style="display: inline-block;"><a href="publish">发布需求 </a></div>
           <%--   <%}else{ %>
@@ -164,14 +163,7 @@ display: block;
             
         </div>
         
-        <div class="header-notice">
-            <a href="javascript:void 0;" class="header-msg-btn"><span class="icon icon-msg"></span></a>
-            <div class="drop-notice dropMenu">
-                <i class="arrow-up"></i>
-                <h3 class="drop-notice-title">私信</h3>
-                <ul class="drop-list"></ul>
-            </div>
-        </div>
+       
         
        
         
@@ -305,7 +297,8 @@ display: block;
  
 $(document).ready(function (){
 	var kind=$('#kind').val();
-	var url;
+	var url="get_demand";
+	//alert(kind);
 	if(kind=='demand')
 		url="get_demand";
 	else
@@ -350,7 +343,7 @@ $(document).ready(function (){
 
      function get_info(url_){
         
-      
+     // alert(url_);
        
          var item='<ul class="topic-list topics">';
          
@@ -360,13 +353,14 @@ $(document).ready(function (){
                           type:"post",
                           dataType: "json",
                           success:function(data){
+                             // alert("hahahahah");
+                              //alert(JSON.stringify(data));
                                for(var i=0;i<data.length;i++){
                             	  item=item+'<li class="a-topic"><a href="details?url='+"no"+'"  class="topic-tutor-link" target="_blank"><span class="topic-tutor-pic" style="background-image : url('
-                                	  +data[i].tx_src+')"></span> <div class="topic-info"> <h3 class="topic-title"> <span class="topic-title-txt">'
+                                	  +data[i].users.tx_src+')"></span> <div class="topic-info"> <h3 class="topic-title"> <span class="topic-title-txt">'
                                 	  +data[i].title+'</span></h3> <div><span class="topic-tutor-name">'
-                                	  +data[i].user.name+'</span><p class="date"><em>'
-                                	  +data[i].date+'</em></p><p class="dec">'
-                                	  +data[i].content+'</p></div></div></a></li>';
+                                	  +data[i].users.name+'</span><p class="date"><em>'
+                                	  +data[i].date+'</em></p></div></div></a></li>';
 
                                 	
                                 	  
@@ -379,7 +373,10 @@ $(document).ready(function (){
                                $(".content").html(item); 
                                $('#page1').show();
 
-                              }
+                              },
+                              error:function(){
+                                       alert('cnm');
+                                  }
                           
 
 

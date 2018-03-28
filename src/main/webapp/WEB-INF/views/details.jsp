@@ -18,6 +18,39 @@
 <link rel="stylesheet" href="css/haha.css">
 
 
+    <style type="text/css">
+
+.qq {
+    display: none;
+    position: absolute;
+    top: 56px;
+    z-index: 99999;
+    background-color: white;
+    border-radius: 0 0 4px 4px;
+     width：50px;
+     line-height:30px;
+    
+    
+     
+}
+
+.huoqu:hover .qq{
+display: block;
+
+}
+.qq a{color: black; height: 30px;}
+.ww{      
+    line-height:30px;
+}
+.ww a{
+       line-height:30px;
+        color: black;
+}
+.zone:hover .qq{
+display: block;
+}
+
+</style>
     
 
 </head>
@@ -30,54 +63,7 @@
     
     <input type="hidden" id="url" value=<%=url %>></input>
 
-<nav class="mobileMenu mobile-menu mobile-menu-nav">
-    <span class="mobile-menu-close">
-        <i class="icon icon-close-menu"></i>
-    </span>
-    <ul class="mobile-menu-list">
-        <li class="item">
-            <a href="">首页</a>
-        </li>
-        
-        <li class="item">
-            <a href="">获取</a>
-        </li>
-        
-        <li class="item">
-            <a href="">专家</a>
-        </li>
-        
-        <li class="item">
-            <a href="">机构</a>
-        </li>
-        
-        <li class="item">
-            <a href="">论坛</a>
-        </li>
-        
-         <li class="item">
-            <a href="">专家观点</a>
-        </li>
-        
-        <li class="item">
-            <a href="">发布需求</a>
-        </li>
-        
-       
-        
-    </ul>
-</nav>
 
-<nav class="mobileMenu mobile-menu mobile-menu-setting">
-    <span class="mobile-menu-close">
-        <i class="icon icon-close-menu"></i>
-    </span>
-   
-    <div class="mobileMenuFooter mobile-menu-footer">
-        <a href="">退出</a>
-    </div>
-    
-</nav>
     
     <!--<![endif]-->
     
@@ -88,37 +74,26 @@
 
 
 
-<div class="mobileHeader mobile-header ">
-    <h1><a href="" class="mobile-logo"><i class="icon icon-zaih"></i></a></h1>
-    <a href="javascript: void 0;" class="mobile-menu-btn" id="mobileMenuBtn"><span class="icon icon-menu"></span></a>
-    
-    <a class="searchBtn search-btn-mobile" ><span class="icon icon-search"></span></a>
-    <form class="search" action="search" method="GET">
-        <input class="search-content" type="text" placeholder="" name="dec" autocomplete="off" value="">
-        <div class="search-sug sug"></div>
-    </form>
-    
-
-    
-    <a href="javascript: void 0;" class="mobile-text-btn" id="mobileLoginBtn">-----_30847</a>
-    
-</div>
 
 <div id="header" class="header ">
 
     <div class="column">
-        <a class="header-logo" href="index.html" >
+        <a class="header-logo" href="/Pro_User" >
         <i class="icon icon-zaih">
         <img  src="img/3.png" width="150px" style="margin-top: 10px">
         </i>
         </a>
         <ul class="header-nav">
             <li class="decorate" style="left: 56px; width: 56px;"></li>
-            
-            
-            
-            <li data-action="nav-select">
-                <a href="" class="active">获取</a>
+            <li data-action="nav-select" class="huoqu">
+                <a href="" class="active" >获取</a>
+          <div class="qq" style="text-align: center;">
+          <div  class="ww"><a href="industry_news" >资讯</a></div>
+                    <div  class="ww"><a href="industry_data" >数据</a></div>
+          
+         
+        
+         </div>             
             </li>
             
             
@@ -139,17 +114,19 @@
             
             
             <li data-action="nav-select">
-                <a href="" class="">论坛</a>
+                <a href="forum" class="">论坛</a>
+            </li>
+            
+              <li data-action="nav-select">
+                <a href="demand_view?kind=demand" class="">需求</a>
             </li>
             
              <li data-action="nav-select">
-                <a href="" class="">专家观点</a>
+                <a href="demand_view?kind=view" class="">专家观点</a>
             </li>
             
             
-             <li data-action="nav-select">
-                <a href="" class="">发布需求</a>
-            </li>
+           
             
             
             
@@ -161,21 +138,36 @@
         <div class="header-setting">
             
           
-            
-            <a href="">-----_30847</a>
-            
-            <a href="">退出</a>
+            <%if(session.getAttribute("account")!=null) {%>
+                 <div  class="zone" style="display: inline-block;">
+                 <a href="" >${sessionScope.name}</a>
+               
+                 <div class="qq" style="text-align: center;">
+          <div  class="ww"><a style="cursor: pointer;" onclick="out()">退出</a></div>
+          
+         
+        
+         </div>
+       
+                 
+                 </div>
+                      
+           
+          <%--  <%if((int)session.getAttribute("type")==0){ %> --%>
+                      <div style="display: inline-block;"><a href="publish_post">发贴 </a></div>
+          
+            <div style="display: inline-block;"><a href="publish">发布需求 </a></div>
+          <%--   <%}else{ %>
+               <a href="">发布观点 </a>
+            <%} %>  --%>
+            <%}else{ %>
+                        <div><a href="">登录</a></div>
+            <%} %>
+           
             
         </div>
         
-        <div class="header-notice">
-            <a href="javascript:void 0;" class="header-msg-btn"><span class="icon icon-msg"></span></a>
-            <div class="drop-notice dropMenu">
-                <i class="arrow-up"></i>
-                <h3 class="drop-notice-title">私信</h3>
-                <ul class="drop-list"></ul>
-            </div>
-        </div>
+       
         
        
         
