@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.UUID;
 
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team.mapping.DemandMap;
 import com.team.mapping.StudentMap;
@@ -210,13 +212,17 @@ public class P_U_Controller {
 	}
 	
 	//上传头像
-	@RequestMapping(value="/Up_tx",method=RequestMethod.POST)
+	@RequestMapping(value="/Up_tx",method=RequestMethod.POST,produces={"text/html;charset=UTF-8;","application/json;"})
 	@ResponseBody
-	public String Up_tx(@RequestParam("file") MultipartFile file,HttpServletRequest request) throws IllegalStateException, IOException {
+	public String Up_tx(HttpServletRequest request) throws IllegalStateException, IOException {
+		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request; 
+		Map map = multipartRequest.getFileMap(); 
+		 MultipartFile file = null;
+		file=(MultipartFile) map.get("file");
 		
-		System.out.println("wcao");
+		System.out.println(file.getName());
 		String uuid = UUID.randomUUID().toString().replaceAll("-",""); 
-		String root=" F:\\Java\\Pro_User\\src\\main\\webapp\\";
+		String root="F:/Pro_User/";
 		String filepath="touxiang/"+uuid+".jpg";
 		System.out.println(root+filepath);
 		File f1=new File(root+filepath);
@@ -228,7 +234,7 @@ public class P_U_Controller {
             
 		
 	
-		return "filepath";
+		return filepath;
 	}
 	
 	//退出登录

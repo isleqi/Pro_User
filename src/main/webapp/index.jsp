@@ -34,55 +34,9 @@
           $(".zone").click(function(){alert("cnm");});
         	}
     });
-    //选择图片
-    /*  var avatarData = null;
-    var photo_select=false;
-    $(function () {
-        $("#avaterFileInput").change(function () {
-           var filePath = $(this).prop("files");
-            if (filePath.length > 0) {
-                filePath = filePath[0];
-                lrz(filePath, {
-                    width: 150,
-                    height: 150
-                }).then(function (rst) {
-                    avatarData = rst.base64;
-                    photo_select=true;
-
-                    var avaterImg = $("#avaterImg");
-                    avaterImg.attr("src", avatarData);
-                    avaterImg.attr("style", "border-radius: 50% 50%");
-                })
-
-            } 
-
-            var aa=$("#selectphoto");
-     	   var form = new FormData(aa);
-     	    
-
-     	      $.ajax({
-     	          url:"Up_tx",
-     	          type:"post",
-     	          data:form,
-     	          cache:false,
-     	          processData:false,
-     	          contentType:false,
-     	          success:function(data){
-     	          	
-     	             alert("上传成功！！！！");
-     	             
-     	          },
-     	          error:function(XMLHttpRequest, textStatus, errorThrown) {  
-     	              alert(XMLHttpRequest.status);  
-     	              alert(XMLHttpRequest.readyState);  
-     	              alert(textStatus);  
-     	          }
-     	      });      
-         
-    }); 
-    });
+   
  
-    */
+    
           
     
     </script>

@@ -156,7 +156,7 @@ display: block;
                <a href="">发布观点 </a>
             <%} %>  --%>
             <%}else{ %>
-                        <div><a href="">登录</a></div>
+                        <div><a href="index.jsp">登录</a></div>
             <%} %>
            
             
