@@ -29,6 +29,8 @@ import com.team.mapping.UsersMap;
 import com.team.model.Demand;
 import com.team.model.News;
 import com.team.model.Post;
+import com.team.model.Post_comment;
+import com.team.model.Reply;
 import com.team.model.Student;
 import com.team.model.Users;
 import com.team.service.*;
@@ -52,6 +54,8 @@ public class P_U_Controller {
 	Publish_post publish_post;       //发布帖子
 	@Autowired
 	Post_list post_list;            //获取帖子
+	@Autowired
+	Comment_reply comment_reply;   //帖子评论回复相关
 	
 	
 	
@@ -328,10 +332,42 @@ public class P_U_Controller {
 		model.addAttribute("post", post);
 		return "post_details";
 	}
-/*	
+	
+	@RequestMapping(value="/publish_comment",method=RequestMethod.POST,produces={"text/html;charset=UTF-8;","application/json;"})
+	@ResponseBody
+	public String publish_comment (String from_account,String post_id,String content) {
+		System.out.println("!!!!!!");
+		Post_comment comment=new Post_comment(Integer.parseInt(post_id),from_account,content);
+	    comment_reply.insert_comment(comment);
+	    
+		return "成功";
+	}
+	
+	@RequestMapping(value="/publish_reply",method=RequestMethod.POST,produces={"text/html;charset=UTF-8;","application/json;"})
+	@ResponseBody
+	public String publish_reply (String from_account,String to_account,String comment_id,String post_id,String content) {
+		System.out.println("!!!!!!");
+		
+	    Reply reply=new Reply(from_account, to_account, content, Integer.parseInt(post_id), Integer.parseInt(comment_id));
+	    
+	    comment_reply.insert_reply(reply);
+		return "成功";
+	}
+	
 	@RequestMapping(value="/get_comment_reply")
 	@ResponseBody
-	public */
+	public ArrayList get_comment_reply(int post_id) {
+		ArrayList<Post_comment> comments=new ArrayList<>();
+		comments=comment_reply.get_comments(post_id);
+		
+		for (Post_comment comment : comments) {
+			comment.replys=comment_reply.get_replys(comment.getId());
+			System.out.println(comment.getId());
+			System.out.println(comment.replys.size());
+		}
+		
+		return comments;
+	}
 
 }
 

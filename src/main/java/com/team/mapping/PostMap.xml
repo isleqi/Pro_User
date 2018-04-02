@@ -13,16 +13,65 @@ select * from post p,users u where p.account=u.account
 select * from post p,users u where p.account=u.account and p.id=#{id}
 </select>
 
+<select id="get_post_comment" resultMap="get_comment_user">
+select * from post_comment p,users u where p.from_account=u.account and p.post_id=#{post_id}
+</select>
+
+<insert id="insert_post_comment" parameterType="com.team.model.Post_comment">
+insert into post_comment(post_id,content,from_account) values(#{post_id},#{content},#{from_account})
+</insert>
+
+<select id="get_replys" resultMap="get_comment_reply">
+select * from post_comment_reply r,users u where  r.comment_id=#{comment_id} and u.account=r.from_account
+</select>
+
+<insert id="insert_reply" parameterType="com.team.model.Reply">
+insert into post_comment_reply(post_id,comment_id,from_account,to_account,content) values(#{post_id},#{comment_id},#{from_account},#{to_account},#{content})
+</insert>
+
+<resultMap type="com.team.model.Post_comment" id="get_comment_user">
+<id property="id" column="id"/>
+<result property="post_id" column="post_id"/>
+<result property="content" column="content"/>
+<result property="date" column="date"/> 
+<association property="user" column="account" javaType="com.team.model.Users">
+<id property="account" column="account" ></id>
+<result property="name" column="name"/>
+<result property="tx_src" column="tx_src"/>
+</association>
+
+</resultMap>
+
 <resultMap type="com.team.model.Post" id="get_post_user">
 <id property="id" column="id"/>
 <result property="title" column="title" />
 <result property="content" column="content"/>
 <result property="date" column="date"/>
 <association property="user" column="account" javaType="com.team.model.Users">
-<id property="name" column="name" ></id>
+<id property="account" column="account" ></id>
+<result property="name" column="name"/>
 <result property="tx_src" column="tx_src"/>
 </association>
 
+</resultMap>
+
+<resultMap type="com.team.model.Reply" id="get_comment_reply">
+<id property="id" column="id" ></id>
+<result property="comment_id" column="comment_id"/>
+<result property="post_id" column="post_id"/>
+<result property="content" column="content"/>
+<result property="date" column="date"/>
+<result property="from_account" column="from_account"/>
+<association property="from_user" column="account" javaType="com.team.model.Users">
+<id property="account" column="account" ></id>
+<result property="name" column="name"/>
+<result property="tx_src" column="tx_src"/>
+</association>
+<association property="to_user" column="account" javaType="com.team.model.Users">
+<id property="account" column="account" ></id>
+<result property="name" column="name"/>
+<result property="tx_src" column="tx_src"/>
+</association>
 </resultMap>
 
 
