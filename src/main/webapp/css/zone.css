@@ -1,0 +1,370 @@
+.main {
+    width: 1170px;
+    margin: 0 auto;
+}
+
+div {
+    display: block;
+}
+body {
+    background: #e9e9e9;
+    font-family: 'Microsoft YaHei';
+    font-size: 12px;
+}
+body, h1, h2, h3, h4, h5, h6, ul, dd, p {
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+    font-family: 'Microsoft YaHei';
+}
+
+body {
+    display: block;
+    margin: 8px;
+}
+
+.main .persional_property {
+    clear: both;
+    margin: 10px 0;
+}
+.main .persion_section {
+    width: 1170px;
+    margin-bottom: 0;
+}
+.main .persion_section, .main .persion_article {
+    float: left;
+}
+.main .edit_intro {
+    width: 667px;
+}
+.main .pop_edit {
+    clear: both;
+    position: absolute;
+    background: #fff;
+    border: 1px solid #dcdcdc;
+    top: -400px;
+    left: 50%;
+    margin-left: -333px;
+    margin-top: -205px;
+    z-index: 1000;
+    opacity: 0;
+}
+
+.main .edit_job {
+    width: 591px;
+}
+.main .edit_contact {
+    width: 591px;
+    margin-top: -170px;
+}
+.main .add_fields {
+    width: 500px;
+    margin-top: -99px;
+}
+.main .add_pro {
+    width: 500px;
+}
+.main .edit_header {
+    background: #fff;
+    width: 685px;
+    border: 1px solid #f0f0f0;
+    padding: 20px 20px 0;
+}
+.main .del_confirm {
+    height: 252px;
+    width: 430px;
+}
+.main .persional_property .person_info_con {
+    background: #fff;
+    border: 1px solid #dcdcdc;
+    margin: 10px auto 0;
+    overflow: hidden;
+    position: relative;
+}
+.main .persional_property .person-photo {
+    width: 150px;
+    height: 200px;
+    float: left;
+    margin: 15px 30px 15px 20px;
+}
+
+dl {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+.main .persional_property .person-info {
+    float: left;
+    width: 950px;
+    margin-top: 30px;
+}
+.main .persional_property .person-photo dt {
+    width: 150px;
+    height: 160px;
+    float: left;
+}
+.main .persional_property .person-info .person-detail {
+    overfolw: hidden;
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+}
+.main .persional_property .person-info .person-sign {
+    overflow: hidden;
+    font-size: 14px;
+    color: #999;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 8px;
+    margin-top: 10px;
+    line-height: 22px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.main .persional_property .person-info-edit {
+    display: block;
+    color: #5C9BF3;
+    cursor: pointer;
+    position: absolute;
+    right: 14px;
+    top: 14px;
+}
+.main .persional_property .person-info .person-nick-name span {
+    display: block;
+    float: left;
+    font-size: 24px;
+    color: #333;
+    font-weight: normal;
+}
+.main .persional_property .person-info .person-detail {
+    overfolw: hidden;
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+}
+.main .persional_property .person-info .person-detail span {
+    font-size: 14px;
+    color: #999;
+    padding: 0 15px;
+}
+.main .persion_section {
+    width: 1170px;
+    margin-bottom: 0;
+}
+.main .persion_section, .main .persion_article {
+    float: left;
+}
+.main .persion_section .person_detail_tab .current_detail {
+    background: #fff;
+    height: 46px;
+    line-height: 46px;
+    border-top: 2px solid #8d8d8d;
+}
+.main .persion_section .person_detail_tab li {
+    width: 287px;
+    height: 48px;
+    line-height: 48px;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    color: #000;
+    background: #eee;
+    margin: 0px;
+    padding: 0px;
+    border-right: 1px solid #fff;
+    cursor: pointer;
+}
+.main li {
+    position: relative;
+    list-style: none;
+    margin-bottom: 20px;
+    margin-right: -40px;
+}
+ul, li, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+
+
+.main .persion_section .aboutMe {
+    background: #fff;
+    padding: 0 20px 28px;
+    border: 1px solid #dcdcdc;
+    border-top: none;
+}
+.main .persion_section .mod-my-collect .silder-content ul li {
+    position: relative;
+    padding: 26px 0;
+    margin: 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+.main li {
+    position: relative;
+    list-style: none;
+    margin-bottom: 20px;
+    margin-right: -40px;
+}
+ul, li, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+.main .persion_section .mod-my-collect .silder-content {
+    margin-bottom: 73px;
+    text-align: left;
+}
+.main .persion_section .mod-my-collect {
+    padding-top: 27px;
+    text-align: center;
+}
+.main .persion_section .person_detail_tab .current_detail {
+    background: #fff;
+    height: 46px;
+    line-height: 46px;
+    border-top: 2px solid #8d8d8d;
+}
+.main .persion_section .person_detail_tab li {
+    width: 287px;
+    height: 48px;
+    line-height: 48px;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    color: #000;
+    background: #eee;
+    margin: 0px;
+    padding: 0px;
+    border-right: 1px solid #fff;
+    cursor: pointer;
+}
+.main li {
+    position: relative;
+    list-style: none;
+    margin-bottom: 20px;
+    margin-right: -40px;
+}
+ul, li, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+Inherited from ul
+.main .persion_section .person_detail_tab ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+ul, li, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+body, h1, h2, h3, h4, h5, h6, ul, dd, p {
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+    font-family: 'Microsoft YaHei';
+}
+
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+.main .persion_section .mod-my-collect .silder-content ul li .content a[data-bind="cont"] {
+    color: #428bca;
+    text-decoration: none;
+}
+a:link, a:visited, a:hover, a:focus {
+    text-decoration: none !important;
+}
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    text-decoration: underline;
+    cursor: auto;
+}
+.main .persion_section .mod-my-collect .silder-content ul li .operate .time {
+    font-size: 12px;
+    margin-right: 25px;
+}
+.main .persion_section .mod-my-collect .silder-content ul li .operate em, .main .persion_section .mod-my-collect .silder-content ul li .operate span {
+    display: inline-block;
+    padding: 0;
+    vertical-align: middle;
+    color: #999;
+    font-size: 18px;
+    cursor: pointer;
+}
+.main li .time {
+    margin: 0 5px;
+    color: #bcbcbc;
+    padding: 0;
+}
+.main li em {
+    font-size: 16px;
+    color: #999;
+}
+.main li em, .main li .nick_tip {
+    color: #be0000;
+    padding-left: 20px;
+    font-style: normal;
+    display: none;
+}
+
+i, cite, em, var, address, dfn {
+    font-style: italic;
+}
+body {
+    background: #e9e9e9;
+    font-family: 'Microsoft YaHei';
+    font-size: 12px;
+}
+a:link, a:visited, a:hover, a:focus {
+    text-decoration: none !important;
+}
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    text-decoration: underline;
+    cursor: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

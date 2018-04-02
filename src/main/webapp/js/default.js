@@ -695,8 +695,56 @@ function registerbtn_clicked() {
               用户信息输入
 ***************************************/
 
+var tx_src="touxiang/default.jpg";
+//选择图片
+var avatarData = null;
+var photo_select=false;
+$(function () {
+    $("#avaterFileInput").change(function () {
+       var filePath = $(this).prop("files");
+        if (filePath.length > 0) {
+            filePath = filePath[0];
+            lrz(filePath, {
+                width: 150,
+                height: 150
+            }).then(function (rst) {
+                avatarData = rst.base64;
+                photo_select=true;
 
+                var avaterImg = $("#avaterImg");
+                avaterImg.attr("src", avatarData);
+                avaterImg.attr("style", "border-radius: 50% 50%");
+            })
 
+        } 
+
+        
+ 	   var form = new FormData();
+ 	   form.append('file',$("#avaterFileInput")[0].files[0]);
+ 	  alert('cnm!!!!');
+ 	      $.ajax({
+ 	          url:"Up_tx",
+ 	          type:"post",
+ 	          data:form,
+ 	          datatype:"text",
+ 	         processData: false,
+ 	        contentType: false,
+ 	          success:function(data){
+ 	          	
+ 	             alert("上传成功！！！！");
+ 	             alert(data);
+ 	             tx_src=data;
+ 	             
+ 	          },
+ 	          error:function(XMLHttpRequest, textStatus, errorThrown) {  
+ 	              alert(XMLHttpRequest.status);  
+ 	              alert(XMLHttpRequest.readyState);  
+ 	              alert(textStatus);  
+ 	          }
+ 	      });      
+     
+}); 
+});
 //保存用户信息点击
 function save_user_info_clicked() {
 	//alert("44444");
@@ -725,12 +773,12 @@ function save_user_info_clicked() {
             return;
         }
     }
-    var tx_src="touxiang/default.jpg";
+    
 
     //注册
     //alert("2222");
     var account=$("#email").val();
- 
+  
     RegisterUser(account,industry, userNick, userPsw,  userPhone,tx_src);
 }
 
