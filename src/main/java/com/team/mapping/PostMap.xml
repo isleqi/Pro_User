@@ -13,6 +13,10 @@ select * from post p,users u where p.account=u.account
 select * from post p,users u where p.account=u.account and p.id=#{id}
 </select>
 
+<select id="get_post_account" resultType="com.team.model.Post">
+select * from post  where account=#{account}
+</select>
+
 <select id="get_post_comment" resultMap="get_comment_user">
 select * from post_comment p,users u where p.from_account=u.account and p.post_id=#{post_id}
 </select>

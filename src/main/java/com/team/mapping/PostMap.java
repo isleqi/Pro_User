@@ -12,6 +12,8 @@ public interface PostMap {
 	
 	public Post get_post(int id);
 	
+	public ArrayList<Post> get_post_account(String account);
+	
 	public void insert_post(Post post);
 	
 	public ArrayList<Post_comment> get_post_comment(int post_id);

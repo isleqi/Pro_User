@@ -9,6 +9,8 @@
    
     
     <script src="js/mlink.min.js"></script>
+        <script src="js/jquery.js"></script>
+    
 
     
     
@@ -51,9 +53,59 @@ display: block;
 .tc{
 text-align:center;
 }
-
+ul li{display: inline;font-size: 20px}
+.post_list ul li{font-size: 15px;display: block;margin-bottom: 10px}
+.post_list li{display: list-item;}
 </style>
+<script>
+$(document).ready(function(){
+         var account =$('#account').val();
+         var json={'account':account};
+         $.ajax({
+                    url:'get_post_account',
+                    data:json,
+                   dataType: "json",
+                   type:"post",
+                   success:function (data){
+                             alert(JSON.stringify(data));
+                             var item='<ul>';
+                             for(var i=0;i<data.length;i++){
+                                      item=item+'<li> <span class="" style="text-align: left"><a href=post_details?id='
+                                      +data[i].id+' target="_blank" >'
+                                      +data[i].title+'</a></span><span class="" style="float: right;"><em data-bind="time" class="" >'
+                                      +data[i].date+'</em></span></li>';
 
+                                 }
+                             item=item+"</ul>";
+
+                             $(".post_list").html(item);
+                             
+                       },
+                    error:function(){
+                               alert('cnm');
+                        }
+
+             });
+
+	
+});
+
+  function get_commands(){
+       var account =$('#account').val();
+       var json={'account':account};
+       $.ajax({
+                    data:json,
+                    url:'get_command_account',
+                    dataType: "json",
+                    type:'post',
+                    success:function (data){
+                            
+                        }
+
+           });
+
+	  }
+</script>
 </head>
 <body style="overflow-x: visible;">
 <div id="header" class="header ">
@@ -122,6 +174,8 @@ text-align:center;
             <%if(session.getAttribute("account")!=null) {%>
                  <div  class="zone" style="display: inline-block;">
                  <a href="zone" >${sessionScope.name}</a>
+                                  <input type="hidden" id="account" value=${sessionScope.account}>
+                 
                
                  <div class="qq" style="text-align: center;">
           <div  class="ww"><a style="cursor: pointer;" onclick="out()">退出</a></div>
@@ -163,6 +217,38 @@ text-align:center;
     </div>
 </div>
 
+<div class="userinfo" style="margin: 70px auto 20px auto;max-width: 1000px;padding: 0 20px;display: table;">
+
+<a href="">
+<img src="touxiang/2969827f7966480abb4eb05077694387.jpg" style="height: 150px;width:150px;float: left;display: inline;">
+</a>
+<div class="" style="float: left;display: inline;margin-left: 30px;word-wrap:break-word;width: 700px">
+
+<div style="display: inline;font-size: 30px;margin-top: 30px">isleqi
+</div>
+
+<div class="" style="">行业：
+</div>
+<div class="" style="">个人简介：
+<span class=""></span>
+
+</div>
+</div>
+
+</div>
+
+<div class="tab" style="margin: 0 auto;width: 900px">
+<ul>
+<li>我的帖子</li>&nbsp;&nbsp;&nbsp;&nbsp;
+<li>我的需求</li>
+</ul>
+</div>
+
+<div class="post_list" style="margin: 0 auto;width:900px;display: table;font-size: 10px;padding-top: 20px">
+</div>
+
+<div class="command-list">
+</div>
 
 </body>
 </HTML>

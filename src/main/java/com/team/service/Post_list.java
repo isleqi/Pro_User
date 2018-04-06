@@ -20,5 +20,8 @@ public class Post_list {
 	public Post get_post(int id) {
 		return postmap.get_post(id);
 		}
-
+	
+	public ArrayList<Post> get_posts(String account){
+		return postmap.get_post_account(account);
+	}
 }

@@ -327,6 +327,12 @@ public class P_U_Controller {
 		return post_list.get_posts();
 	}
 	
+	@RequestMapping(value="/get_post_account",method=RequestMethod.POST)
+	@ResponseBody
+	public ArrayList<Post> get_post_acount(String account ){
+		return post_list.get_posts(account);
+	}
+	
 	@RequestMapping(value="/post_details")
 	public String post_details(HttpServletRequest request,Model model) {
 		int id=Integer.parseInt(request.getParameter("id"));
