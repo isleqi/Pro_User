@@ -106,14 +106,24 @@ display: block;
         	}
     	//alert(content);
     	var json={'account':account,'content':content,'title':title,'industry':industry};
+    	var url;
+    	var identity=$("#identity").val();
+    	if(identity=='0')
+        	url='publish_demand';
+    	else
+        	url='publish_view';
     	$.ajax({
              type:"post",
-             url:"publish_demand",
+             url:url,
                   data:json,
                   dataType: "text",
                   success:function(data){
                         alert(data);
+                        if(url=='publish_demand')
                         top.location.href="demand_view?kind=demand";
+                        else
+                            top.location.href="demand_view?kind=view";
+                        
                       },
               error:function(){
                            alert("cnm");
@@ -124,7 +134,19 @@ display: block;
         	});
 
         }
-  
+    function out(){
+        $.ajax({
+                url:"out",
+                dataType: "text",
+                type:"post",
+                success:function(data){
+                           alert(data);
+                           top.location.href="index.jsp"; 
+
+                    }
+            });
+    }
+
  </script>
  
  
@@ -149,7 +171,6 @@ display: block;
 <input type="hidden" id="account" value=${sessionScope.account}>
 
 
-
 <div id="header" class="header ">
 
     <div class="column">
@@ -161,61 +182,39 @@ display: block;
         <ul class="header-nav">
             <li class="decorate" style="left: 56px; width: 56px;"></li>
             <li data-action="nav-select" class="huoqu">
-                <a href="" class="active" >获取</a>
+                <a href="industry_news" id="huoqu">获取</a>
           <div class="qq" style="text-align: center;">
           <div  class="ww"><a href="industry_news" >资讯</a></div>
-                    <div  class="ww"><a href="industry_data" >数据</a></div>
-          
-         
-        
-         </div>             
+                    <div  class="ww"><a href="industry_data" >数据</a></div></div>             
+            </li>
+            <li data-action="nav-select">
+                <a href="professor_list" class="" id="professor">专家</a>
+            </li>
+            <li data-action="nav-select">
+                <a href="" class="" id="organization">机构</a>
             </li>
             
-            
-            
-            
             <li data-action="nav-select">
-                <a href="" class="">专家</a>
-            </li>
-            
-            
-            
-            
-            <li data-action="nav-select">
-                <a href="" class="">机构</a>
-            </li>
-            
-            
-            
-            
-            <li data-action="nav-select">
-                <a href="forum" class="">论坛</a>
+                <a href="forum" class="" id="forum">论坛</a>
             </li>
             
               <li data-action="nav-select">
-                <a href="demand_view?kind=demand" class="">需求</a>
+                <a href="demand_view?kind=demand" class="" id="demand">需求</a>
             </li>
             
              <li data-action="nav-select">
-                <a href="demand_view?kind=view" class="">专家观点</a>
+                <a href="demand_view?kind=view" class="" id="view">专家观点</a>
             </li>
-            
-            
-           
-            
-            
-            
-            
-           
-            
-            
+       
         </ul>
         <div class="header-setting">
-            
+            <input type="hidden" id="identity" value=${sessionScope.identity} >
           
             <%if(session.getAttribute("account")!=null) {%>
                  <div  class="zone" style="display: inline-block;">
-                 <a href="" >${sessionScope.name}</a>
+                 <a href="zone" >${sessionScope.name}</a>
+                                  <input type="hidden" id="account" value=${sessionScope.account}>
+                 
                
                  <div class="qq" style="text-align: center;">
           <div  class="ww"><a style="cursor: pointer;" onclick="out()">退出</a></div>
@@ -228,13 +227,15 @@ display: block;
                  </div>
                       
            
-          <%--  <%if((int)session.getAttribute("type")==0){ %> --%>
+            
                       <div style="display: inline-block;"><a href="publish_post">发贴 </a></div>
-          
+                      
+          <%if(session.getAttribute("identity").equals("0")){ %>
+           
             <div style="display: inline-block;"><a href="publish">发布需求 </a></div>
-          <%--   <%}else{ %>
-               <a href="">发布观点 </a>
-            <%} %>  --%>
+            <%}else if(session.getAttribute("identity").equals("1")){ %>
+            <div style="display: inline-block;"><a href="publish">发布观点 </a></div>
+            <%} %>  
             <%}else{ %>
                         <div><a href="">登录</a></div>
             <%} %>
@@ -256,6 +257,7 @@ display: block;
         
     </div>
 </div>
+
     
     <%! String type; String url;%>
     <%type=(String)request.getAttribute("type"); url=(String)request.getAttribute("url");%>
@@ -282,7 +284,7 @@ display: block;
                                                 </select>
 </div>
     <div style="margin-left: 200px;margin-top: 10px;position: relative;">
-    <p style="margin-left: 300px;margin-top: 20px;position: relative;">需求描述</p>
+    <p style="margin-left: 300px;margin-top: 20px;position: relative;"></p>
 <textarea name="content" id="aaa" >
 </textarea>  
 </div>
@@ -306,7 +308,16 @@ display: block;
  <script>
  
 $(document).ready(function (){
-
+	 var elem=document.getElementById('view');
+     elem.className="";
+     elem=document.getElementById('huoqu');
+     elem.className="";
+     elem=document.getElementById('professor');
+     elem.className="";
+     elem=document.getElementById('demand');
+     elem.className="";
+     elem=document.getElementById('forum');
+     elem.className="";
 });
 
 

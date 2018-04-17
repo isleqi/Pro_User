@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1">
 
@@ -172,21 +174,21 @@ select.m-wrap {
                 
                 <div class=" posirelative select-out-div">
                                                 <select class="m-wrap  user_input" id="industry" value='0' style="width: 280px; padding: 2px 0;">
-                                                    <option value="IT与通讯">IT与通讯</option>
-                                                    <option value="机器电子">机器电子</option>
-                                                    <option value="医疗医药保健">医疗医药保健</option>
-                                                    <option value="建筑房地产">建筑房地产</option>
-                                                    <option value="金融保险投资">金融保险投资</option>
-                                                    <option value="出版传媒包装">出版传媒包装</option>
-                                                    <option value="酒店旅游餐饮">酒店旅游餐饮</option>
-                                                    <option value="零售商贸">零售商贸</option>
-                                                    <option value="能源矿产环保">能源矿产环保</option>
-                                                    <option value="石油化工">石油化工</option>
-                                                    <option value="食品饮料酒业">食品饮料酒业</option>
-                                                    <option value="家用电器">家用电器</option>
-                                                    <option value="家用日化">家用日化</option>
-                                                    <option value="车辆交通运输">车辆交通运输</option>
-                                                    <option value="其他">其他</option>
+                                                    <option value="0">IT与通讯</option>
+                                                    <option value="1">机器电子</option>
+                                                    <option value="3">医疗医药保健</option>
+                                                    <option value="4">建筑房地产</option>
+                                                    <option value="5">金融保险投资</option>
+                                                    <option value="6">出版传媒包装</option>
+                                                    <option value="7">酒店旅游餐饮</option>
+                                                    <option value="8">零售商贸</option>
+                                                    <option value="9">能源矿产环保</option>
+                                                    <option value="10">石油化工</option>
+                                                    <option value="11">食品饮料酒业</option>
+                                                    <option value="12">家用电器</option>
+                                                    <option value="13">家用日化</option>
+                                                    <option value="14">车辆交通运输</option>
+                                                    <option value="15">其他</option>
                                                 </select>
                                                 <span class="select-hide-span" >
                                                     <b class="select-show-b"  ></b></span>
@@ -219,61 +221,8 @@ select.m-wrap {
             <div><a class="save_user_info" href="javascript:save_user_info_clicked()">保存</a></div>
         </div>
         
-        <div id="rm_forgetpassword" style="display: none;">
-            <div id="fp_step1">
-                <div class="fp_title">找回密码</div>
-                <div class="userinput_parent">
-                    <div class="user_input_text">&nbsp;</div>
-                    <div>
-                        <input type="text" class="user_input" id="txtFpEmail" placeholder="邮箱">
-                    </div>
-                </div>
-                <div id="validateParentFP" class="userinput_parent" style="display:none;">
-                    <div class="user_input_text">&nbsp;</div>
-                    <input type="text" class="user_input validate_input" id="validateFP" onblur="this.value = this.value.toLowerCase();" placeholder="请先输入验证码">
-                    <img src="validate.aspx?s=fp" onclick="this.src = 'validate.aspx??s=fp&amp;r=' + Math.random()" alt="将图中的文字填到左边输入框中" id="randomNoImgFP">
-                </div>
-                <div class="userinput_parent no_border">
-                    <div class="code_parent">
-                        <div class="user_input_text">&nbsp;</div>
-                        <div>
-                            <input type="number" class="user_input code_input" id="txtFpCode" placeholder="验证码">
-                        </div>
-                    </div>
-                    <a id="fp_sendsms" class="sendsms sendsms_enable a_link" href="javascript:send_sp_sms_click()">获取验证码</a>
-                </div>
-                <a class="fp_nextbtn" href="javascript:fp_nextbtn_clicked()">下一步</a>
-                <div class="fp_backbtn_parent">
-                    <a class="fp_backbtn a_link" href="javascript:fp_backbtn_clicked()">
-                        <img src="img/arraw_left.png" width="6" height="10" alt="">&nbsp;返回</a>
-                </div>
-            </div>
-        </div>
-        <div id="fp_step2" style="display: none;">
-            <div class="fp_title">修改密码</div>
-            <div class="userinput_parent">
-                <div class="user_input_text">&nbsp;</div>
-                <div>
-                    <input type="password" class="user_input" id="txtFpPsw" placeholder="新密码（6位或以上数字和字母）">
-                </div>
-            </div>
-            <div class="userinput_parent">
-                <div class="user_input_text">&nbsp;</div>
-                <div>
-                    <input type="password" class="user_input" id="txtFpPswConfirm" placeholder="确认密码（再次输入密码）">
-                </div>
-            </div>
-            <a class="fp_save_psw" href="javascript:fp_save_psw_clicked()">保存</a>
-        </div>
     </form>
     
-    <div class="error_msg">
-        <div class="error_mask"></div>
-        <div class="error_content">
-            <img class="error_img" src="img/ok.png" width="50" height="50" alt="ok">
-            <div class="error_text"></div>
-        </div>
-    </div>
 
 
 </body></html>

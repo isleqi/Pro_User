@@ -4,7 +4,7 @@ public class Reply {
 	private int id;
 	private int comment_id;
 	private int post_id;
-	private String from_account;
+	private String r_from_account;
 	private String to_account;
 	private String content;
 	private String type;
@@ -15,8 +15,8 @@ public class Reply {
 	public Reply(){
 		
 	}
-	public Reply(String from_account,String to_account,String content,int post_id,int comment_id) {
-		this.from_account=from_account;
+	public Reply(String r_from_account,String to_account,String content,int post_id,int comment_id) {
+		this.r_from_account=r_from_account;
 		this.to_account=to_account;
 		this.content=content;
 		this.post_id=post_id;
@@ -57,11 +57,11 @@ public class Reply {
 		this.post_id=post_id;
 	}
 	
-	public String getFrom_account() {
-		return from_account;
+	public String getR_from_account() {
+		return r_from_account;
 	}
-	public void setFrom_account(String from_account) {
-		this.from_account=from_account;
+	public void setR_from_account(String r_from_account) {
+		this.r_from_account=r_from_account;
 	}
 	
 	public String getTo_account() {

@@ -24,4 +24,8 @@ public class Post_list {
 	public ArrayList<Post> get_posts(String account){
 		return postmap.get_post_account(account);
 	}
+	
+	public void delete_post(int post_id) {
+		postmap.delete_post(post_id);
+	}
 }

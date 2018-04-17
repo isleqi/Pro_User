@@ -14,5 +14,7 @@ public interface UsersMap {
 	public void insert_account(Users user);
 	
 	public void delete_account(Users user);
+	
+	public void update_account(Users user);
 
 }

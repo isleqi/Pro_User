@@ -26,12 +26,16 @@ insert into post_comment(post_id,content,from_account) values(#{post_id},#{conte
 </insert>
 
 <select id="get_replys" resultMap="get_comment_reply">
-select * from post_comment_reply r,users u where  r.comment_id=#{comment_id} and u.account=r.from_account
+select * from post_comment_reply r,users u where  r.comment_id=#{comment_id} and u.account=r.r_from_account
 </select>
 
 <insert id="insert_reply" parameterType="com.team.model.Reply">
-insert into post_comment_reply(post_id,comment_id,from_account,to_account,content) values(#{post_id},#{comment_id},#{from_account},#{to_account},#{content})
+insert into post_comment_reply(post_id,comment_id,r_from_account,to_account,content) values(#{post_id},#{comment_id},#{r_from_account},#{to_account},#{content})
 </insert>
+
+<delete id="delete_post">
+delete from post where id=#{post_id}
+</delete>
 
 <resultMap type="com.team.model.Post_comment" id="get_comment_user">
 <id property="id" column="id"/>
@@ -65,7 +69,7 @@ insert into post_comment_reply(post_id,comment_id,from_account,to_account,conten
 <result property="post_id" column="post_id"/>
 <result property="content" column="content"/>
 <result property="date" column="date"/>
-<result property="from_account" column="from_account"/>
+<result property="r_from_account" column="r_from_account"/>
 <association property="from_user" column="account" javaType="com.team.model.Users">
 <id property="account" column="account" ></id>
 <result property="name" column="name"/>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.mapping.OrganizationMap">
+<select id="getOrganization" resultType="com.team.model.Organization">
+select * from organization where account=#{account}
+</select>
+
+<select id="getOrganizations" resultMap="get_organization_user">
+select * from organization o,users u where o.account=u.account
+</select>
+
+<insert id="insertOrganization" parameterType="com.team.model.Organization">
+insert into organization value(#{account},#{introduction},#{address})
+</insert>
+
+<update id="updateOrganization" parameterType="com.team.model.Organization">
+</update>
+
+<resultMap type="com.team.model.Organization" id="get_organization_user">
+<id property="account" column="account"/>
+<result property="introduction" column="introduction"/>
+<association property="user" column="account" javaType="com.team.model.Users">
+<id property="account" column="account"/>
+<result property="name" column="name"/>
+<result property="tx_src" column="tx_src"/>
+</association>
+</resultMap>
+</mapper>

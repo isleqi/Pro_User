@@ -1,24 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!-- saved from url=(0057)https://www.zaih.com/topics/?category_id=420&city=beijing -->
-<html class="no-js" lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
-    <title>获取</title>
+    <title>论坛</title>
    
     
     <script src="js/mlink.min.js"></script>
+        <script src="js/jquery.js"></script>
+    
 
     
     
 
     <link rel="stylesheet" href="css/a488d11a.base.css">
     
-<link rel="stylesheet" href="css/e099c360.topicList.css">
-<link rel="stylesheet" href="css/haha.css">
+     <link rel="stylesheet" href="css/e099c360.topicList.css">
 
-
-    <style type="text/css">
+<style type="text/css">
 
 .qq {
     display: none;
@@ -49,32 +50,65 @@ display: block;
 .zone:hover .qq{
 display: block;
 }
+.tc{
+text-align:center;
+}
 
 </style>
-    
+<script>
+$(document).ready(function(){
+	 var elem=document.getElementById('view');
+     elem.className="";
+     elem=document.getElementById('huoqu');
+     elem.className="";
+     elem=document.getElementById('professor');
+     elem.className="";
+     elem=document.getElementById('demand');
+     elem.className="active";
+     elem=document.getElementById('forum');
+     elem.className="";
+	 var demand_id=$("#demand_id").val();
+	 var json={'demand_id':demand_id};
+	 $.ajax({
+             url:'get_demand_details',
+             data:json,
+             dataType: "json",
+             type:'post',
+             success:function(data){
+                 alert(JSON.stringify(data));
+                 $(".demand_title").html(data.title);
+                 $(".demand_content").html(data.content);
+                 var item='<img src='+data.user.tx_src+' style="height: 50px;width:50px;float: left;display: inline;"><div style="font-weight:blod">&nbsp;&nbsp;&nbsp;'
+                 +data.user.name+'&nbsp;|&nbsp'
+                 +data.user.phone+'</div>';
+                 $(".userInfo").html(item);
+                     
+                 }
 
+
+		 });
+	 
+        
+});
+  
+
+function out(){
+    $.ajax({
+            url:"out",
+            dataType: "text",
+            type:"post",
+            success:function(data){
+                       alert(data);
+                       top.location.href="index.jsp"; 
+
+                }
+        });
+}
+ 
+</script>
 </head>
-<%!String url; %>
-<%url=(String)request.getAttribute("url");%>
-
-
 <body style="overflow-x: visible;">
-    <!--[if gt IE 8]><!-->
-    
-    <input type="hidden" id="url" value=<%=url %>></input>
-
-
-    
-    <!--<![endif]-->
-    
-    
-
-
-
-
-
-
-
+<input type="hidden" id="demand_id" value=${requestScope.demand_id} >
 <div id="header" class="header ">
 
     <div class="column">
@@ -83,7 +117,7 @@ display: block;
         <img  src="img/3.png" width="150px" style="margin-top: 10px">
         </i>
         </a>
-        <ul class="header-nav">
+         <ul class="header-nav">
             <li class="decorate" style="left: 56px; width: 56px;"></li>
             <li data-action="nav-select" class="huoqu">
                 <a href="industry_news" id="huoqu">获取</a>
@@ -161,103 +195,21 @@ display: block;
         
     </div>
 </div>
-  
-<div class="content" style="margin-top: 80px;margin-bottom: 100px">
-    
 
-   
+<div style="margin: 30px auto;width: 1000px;height: 100%">
+<div class="demandInfo" >
+
+<div class="demand_title" style="margin-top:100px;margin-bottom:20px;margin-left:0;display: table;font-size: 30px;font-weight: bold;">
+</div>
+<div style="font-size: 20px;margin-bottom: 10px"> 需求描述:</div>
+<div class="demand_content">
 </div>
 
+<div class="userInfo" style="font-weight: bold;position:fixed;height: 100px;rigth:0;bottom: 0;width: 100%">
 
-    
-  
+</div>
 </div>
 
-
-<!-- JavaScript at the bottom for fast page loading -->
-
-
-<script>
-var weixin_mp_config = {"appId": "wx63736776bf28c6b5", "nonceStr": "wuflTNo8oUcu", "signature": "e1440d8146f9b24e81a86f16715035957c66e99f", "timestamp": "1520831665"};
-</script>
-
-<script>
-var current_user = {"avatar": "//media.zaih.com/Fh8J1Fi5s-dN1IasJlJ12wpJKOsa", "followers_count": 0, "id": 85241129, "industry": null, "is_tutor": false, "labels": [], "location": null, "nickname": "-----_30847", "realname": "", "title": null};
-</script>
-
-<script src="js/62c4d7e6.base.js"></script>
-<script src="js/76b4679b.main.js"></script>
-<script src="js/jquery-1.7.2.min.js"></script>
-<script src="js/8e026d0f.topicList.js"></script>
-  
-
- <script>
- var currentpage=1;
- var type_url;
- var type;
- var temp;
- 
-$(document).ready(function (){
-	 var elem=document.getElementById('view');
-     elem.className="";
-     elem=document.getElementById('huoqu');
-     elem.className="active";
-     elem=document.getElementById('professor');
-     elem.className="";
-     elem=document.getElementById('demand');
-     elem.className="";
-     elem=document.getElementById('forum');
-     elem.className="";
-	var url=$("#url").val();
-	var json={'url':url};
-	$.ajax({
-                data:json,
-                url:'get_news_details',
-                dataType: "text",
-                type:"post",
-                success:function(data){
-                   $(".content").html(data);
-                   var dl=document.getElementsByClassName("mt2")[0];
-                   var img=dl.getElementsByTagName("img");
-                   for(var i=0;i<img.length;i++)
-                       {
-                	   var before=img[i].getAttribute("src");
-                       //alert(before);
-                       img[i].setAttribute("src", "http://www.chinairn.com"+before);
-
-                       }
-                  
-                   
-
-                    }
-
-		});
-});
-
-function out(){
-    $.ajax({
-            url:"out",
-            dataType: "text",
-            type:"post",
-            success:function(data){
-                       alert(data);
-                       top.location.href="index.jsp"; 
-
-                }
-        });
-}
-
-</script>
-
-<!-- end scripts -->
-
-
-
-
-
-
-
-
-
+</div>
 </body>
-</html>
+</HTML>

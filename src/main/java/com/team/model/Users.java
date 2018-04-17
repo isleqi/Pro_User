@@ -7,19 +7,26 @@ public class Users {
 	private String phone;
 	private String tx_src;
 	private String industry;
-	private int type;
+	private String type;
 	
 	public Users() {
 		
 	}
 	
-	public Users(String account,String password,String name,String phone,String tx_src,String industry,int type) {
+	public Users(String account,String password,String name,String phone,String tx_src,String industry,String type) {
 		this.account=account;
 		this.password=password;
 		this.name=name;
 		this.phone=phone;
 		this.tx_src=tx_src;
 		this.type=type;
+	}
+	public Users(String account,String name,String phone,String tx_src,String industry) {
+		this.account=account;
+		this.name=name;
+		this.phone=phone;
+		this.tx_src=tx_src;
+		this.industry=industry;
 	}
 	
 	public String getAccount() {
@@ -66,10 +73,10 @@ public class Users {
 	}
 	
 	
-	public int getType() {
+	public String getType() {
 		return type;
 	}
-	public void setType(int type) {
+	public void setType(String type) {
 		this.type=type;
 	}
 }

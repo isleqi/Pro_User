@@ -614,9 +614,13 @@ function getReturnUrl() {
     return url;
 }*/
 //注册按钮点击
-function registerbtn_clicked() {
+
+
+var identity;
+function registerbtn_clicked(type) {
+	identity=type;
 	//alert("sdasdasda");
-    var email = $('#email');
+   var email = $('#email');
     var code = $('#code');
     if (!isEmail(email.val())) {
         ShowErrorMessage("请输入正确的邮箱");
@@ -654,9 +658,10 @@ function registerbtn_clicked() {
            
     	}
     	
-    		
+    	
     	
     }
+    
 
    /* //发送验证请求
     $.ajax({
@@ -691,12 +696,15 @@ function registerbtn_clicked() {
     
 }
 
+
+
+
 /***************************************
               用户信息输入
 ***************************************/
 
 var tx_src="touxiang/default.jpg";
-//选择图片
+
 var avatarData = null;
 var photo_select=false;
 $(function () {
@@ -779,11 +787,11 @@ function save_user_info_clicked() {
     //alert("2222");
     var account=$("#email").val();
   
-    RegisterUser(account,industry, userNick, userPsw,  userPhone,tx_src);
+    RegisterUser(account,industry, userNick, userPsw,  userPhone,tx_src,identity);
 }
 
 //注册账号
-function RegisterUser(account,industry,userNick, userPsw, userPhone,tx_src) {
+function RegisterUser(account,industry,userNick, userPsw, userPhone,tx_src,identity) {
     var checkcode = $("#code").val();
 //alert(account+industry+userNick);
     var oriPsw = userPsw;
@@ -800,7 +808,7 @@ function RegisterUser(account,industry,userNick, userPsw, userPhone,tx_src) {
         userPswConfirm = userPswConfirm.replace("+", "%2B");
     }*/
   
-       var json={'email':account,'industry':industry,'name':userNick,'password':userPsw,'phone':userPhone,'tx_src':tx_src,'type':0};
+       var json={'email':account,'industry':industry,'name':userNick,'password':userPsw,'phone':userPhone,'tx_src':tx_src,'type':identity};
     
     $.ajax({
         type: "POST",

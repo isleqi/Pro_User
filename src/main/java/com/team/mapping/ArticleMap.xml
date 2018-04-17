@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.mapping.ArticleMap">
+<insert id="insert_article" parameterType="com.team.model.Article">
+insert into article(a_account,title,content,industry) values(#{a_account},#{title},#{content},#{industry})
+</insert>
+
+<select id="get_articles" resultMap="get_article_user">
+select * from article a,users u where a.a_account=u.account
+</select>
+
+<select id="get_article" resultMap="get_article_user">
+select * from article a,users u where a.a_account=u.account and a.id=#{id}
+</select>
+
+<select id="get_article_account" resultType="com.team.model.Article">
+select * from article  where a_account=#{a_account}
+</select>
+
+
+
+
+<delete id="delete_article">
+delete from article where id=#{article_id}
+</delete>
+
+
+
+<resultMap type="com.team.model.Article" id="get_article_user">
+<id property="id" column="id"/>
+<result property="a_account" column="a_account"/>
+<result property="title" column="title" />
+<result property="content" column="content"/>
+<result property="industry" column="industry"/>
+<result property="date" column="date"/>
+<association property="user" column="account" javaType="com.team.model.Users">
+<id property="account" column="account" ></id>
+<result property="name" column="name"/>
+<result property="tx_src" column="tx_src"/>
+</association>
+
+</resultMap>
+
+
+
+
+</mapper>

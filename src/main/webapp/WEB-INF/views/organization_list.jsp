@@ -4,10 +4,12 @@
 <!-- saved from url=(0057)https://www.zaih.com/topics/?category_id=420&city=beijing -->
 <html class="no-js" lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
-    <title>获取</title>
+    <title>专家</title>
    
     
     <script src="js/mlink.min.js"></script>
+        <script src="js/jquery.js"></script>
+    
 
     
     
@@ -48,7 +50,24 @@ display: block;
 }
 
 </style>
+<script>
+$(document).ready(function(){
+	 var elem=document.getElementById('view');
+     elem.className="";
+     elem=document.getElementById('huoqu');
+     elem.className="";
+     elem=document.getElementById('professor');
+     elem.className="";
+     elem=document.getElementById('demand');
+     elem.className="";
+     elem=document.getElementById('forum');
+     elem.className="";
+     elem=document.getElementById('organization');
+     elem.className="active";
+     
+	get_info();});
 
+</script>
 </head>
 <body style="overflow-x: visible;">
     <!--[if gt IE 8]><!-->
@@ -60,17 +79,7 @@ display: block;
 
     
     <!--<![endif]-->
-    <%!String kind; %>
-    
-    <%kind=request.getParameter("kind"); %>
-
-
-<input type="hidden" name="kind" id="kind" value=<%=kind %>>
-
-
-
-
-
+  
 <div id="header" class="header ">
 
     <div class="column">
@@ -91,7 +100,7 @@ display: block;
                 <a href="professor_list" class="" id="professor">专家</a>
             </li>
             <li data-action="nav-select">
-                <a href="" class="" id="organization">机构</a>
+                <a href="organization_list" class="" id="organization">机构</a>
             </li>
             
             <li data-action="nav-select">
@@ -169,8 +178,8 @@ display: block;
         <div class="crumb">
             <h2>
                 <input id='url' value=<%=url %> type="hidden"></input>
-                <a id='type' ><%=type %></a><i class="icon icon-go"></i>
-                
+<%--                 <a id='type' ><%=type %></a><i class="icon icon-go"></i>
+ --%>                
             </h2>
             
             
@@ -274,41 +283,6 @@ display: block;
  
  var type;
 
- 
-$(document).ready(function (){
-	var kind=$('#kind').val();
-	 var elem=document.getElementById('view');
-	 if(kind=='view')
-	     elem.className="active";
-	 else
-	     elem.className="";
-	 
-     
-     elem=document.getElementById('huoqu');
-     elem.className="";
-     elem=document.getElementById('professor');
-     elem.className="";
-     elem=document.getElementById('demand');
-     if(kind=='demand')
-     elem.className="active";
-     else
-         elem.className="";
-     
-     elem=document.getElementById('forum');
-     elem.className="";
-	var url="get_demand";
-	//alert(kind);
-	if(kind=='demand')
-		url="get_demand";
-	else
-		url="get_view";
-
-   get_info(url);
-});
-
-
-  
-  
 
      function goto_page(action){
          //alert(action);
@@ -340,31 +314,30 @@ $(document).ready(function (){
 
          }
 
-     function get_info(url_){
-        
+     function get_info(){   
      // alert(url_);
-       var href;
-       if(url_=='get_demand')
-           href='demand_details';
-       else
-           href='article_details'
+       
          var item='<ul class="topic-list topics">';
          
              $.ajax({
                          
-                          url:url_,
+                          url:"get_organizations",
                           type:"post",
                           dataType: "json",
                           success:function(data){
                              // alert("hahahahah");
-                              //alert(JSON.stringify(data));
+                            // alert(JSON.stringify(data));
+                            var jianjie;
                                for(var i=0;i<data.length;i++){
-                            	  item=item+'<li class="a-topic"><a href="'+href+'?id='
-                            	  +data[i].id+'"  class="topic-tutor-link" target="_blank"><span class="topic-tutor-pic" style="background-image : url('
-                                	  +data[i].user.tx_src+')"></span> <div class="topic-info"> <h3 class="topic-title"> <span class="topic-title-txt">'
-                                	  +data[i].title+'</span></h3> <div><span class="topic-tutor-name">'
-                                	  +data[i].user.name+'</span><p class="date"><em>'
-                                	  +data[i].date+'</em></p></div></div></a></li>';
+                                   if(data[i].introduction==null)
+                                       jianjie='';
+                                   else
+                                       jianjie=data[i].introduction;
+                                   
+                            	  item=item+'<li class="a-topic"><a href="zone2?account='+data[i].user.account+'"  class="topic-tutor-link" target="_blank"><span class="topic-tutor-pic" style="background-image : url('
+                                	  +data[i].user.tx_src+')"></span> <div class="topic-info"> <h3 class="topic-title"> <span class="topic-tutor-name">'
+                                	  +data[i].user.name+'</span></h3> <div><span class="topic-tutor-txt">'
+                                	  +jianjie+'</span></div></div></a></li>';
 
                                 	
                                 	  

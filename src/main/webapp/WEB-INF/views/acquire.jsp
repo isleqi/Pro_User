@@ -81,61 +81,39 @@ display: block;
         <ul class="header-nav">
             <li class="decorate" style="left: 56px; width: 56px;"></li>
             <li data-action="nav-select" class="huoqu">
-                <a href="" class="active" >获取</a>
+                <a href="industry_news" id="huoqu">获取</a>
           <div class="qq" style="text-align: center;">
           <div  class="ww"><a href="industry_news" >资讯</a></div>
-                    <div  class="ww"><a href="industry_data" >数据</a></div>
-          
-         
-        
-         </div>             
+                    <div  class="ww"><a href="industry_data" >数据</a></div></div>             
+            </li>
+            <li data-action="nav-select">
+                <a href="professor_list" class="" id="professor">专家</a>
+            </li>
+            <li data-action="nav-select">
+                <a href="" class="" id="organization">机构</a>
             </li>
             
-            
-            
-            
             <li data-action="nav-select">
-                <a href="" class="">专家</a>
-            </li>
-            
-            
-            
-            
-            <li data-action="nav-select">
-                <a href="" class="">机构</a>
-            </li>
-            
-            
-            
-            
-            <li data-action="nav-select">
-                <a href="forum" class="">论坛</a>
+                <a href="forum" class="" id="forum">论坛</a>
             </li>
             
               <li data-action="nav-select">
-                <a href="demand_view?kind=demand" class="">需求</a>
+                <a href="demand_view?kind=demand" class="" id="demand">需求</a>
             </li>
             
              <li data-action="nav-select">
-                <a href="demand_view?kind=view" class="">专家观点</a>
+                <a href="demand_view?kind=view" class="" id="view">专家观点</a>
             </li>
-            
-            
-           
-            
-            
-            
-            
-           
-            
-            
+       
         </ul>
         <div class="header-setting">
             
           
             <%if(session.getAttribute("account")!=null) {%>
                  <div  class="zone" style="display: inline-block;">
-                 <a href="" >${sessionScope.name}</a>
+                 <a href="zone" >${sessionScope.name}</a>
+                                  <input type="hidden" id="account" value=${sessionScope.account}>
+                 
                
                  <div class="qq" style="text-align: center;">
           <div  class="ww"><a style="cursor: pointer;" onclick="out()">退出</a></div>
@@ -148,13 +126,15 @@ display: block;
                  </div>
                       
            
-          <%--  <%if((int)session.getAttribute("type")==0){ %> --%>
+            
                       <div style="display: inline-block;"><a href="publish_post">发贴 </a></div>
-          
+                      
+          <%if(session.getAttribute("identity").equals("0")){ %>
+           
             <div style="display: inline-block;"><a href="publish">发布需求 </a></div>
-          <%--   <%}else{ %>
-               <a href="">发布观点 </a>
-            <%} %>  --%>
+            <%}else if(session.getAttribute("identity").equals("1")){ %>
+            <div style="display: inline-block;"><a href="publish">发布观点 </a></div>
+            <%} %>  
             <%}else{ %>
                         <div><a href="">登录</a></div>
             <%} %>
@@ -293,6 +273,16 @@ display: block;
  var temp;
  
 $(document).ready(function (){
+	  var elem=document.getElementById('view');
+      elem.className="";
+      elem=document.getElementById('huoqu');
+      elem.className="active";
+      elem=document.getElementById('professor');
+      elem.className="";
+      elem=document.getElementById('demand');
+      elem.className="";
+      elem=document.getElementById('forum');
+      elem.className="";
 	var url=$('#url').val();
 	//alert(url);
    get_info(url);

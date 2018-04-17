@@ -30,9 +30,8 @@
     	if(document.getElementById('tx').className=='header-icon header-icon-profile had_denglu'){
     		$('#denglu').unbind("click");
     		document.getElementById('denglu').className='header-profile-link zone';
-    		
-          $(".zone").click(function(){alert("cnm");});
-        	}
+    	}
+    	
     });
     
           
@@ -58,7 +57,7 @@
 <a href="industry_data">行业数据</a>
 </div>
 </div>
-<a href="">专家</a>
+<a href="professor_list">专家</a>
 <a href="">机构</a>
 <a href="forum">论坛</a>
 <a href="demand_view?kind=demand">需求</a>
@@ -75,7 +74,7 @@
 <%
 if(session.getAttribute("account")!=null){
 %>
-<img src=${sessionScope.tx_src} class="header-icon header-icon-profile had_denglu" id="tx" alt="more">
+<a href="zone"><img src=${sessionScope.tx_src} class="header-icon header-icon-profile had_denglu" id="tx" alt="more"></a>
 <%}
 else{
 %>

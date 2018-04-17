@@ -1,4 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team.mapping.ProfessorMap">
+<select id="getProfessor" resultType="com.team.model.Professor">
+select * from professor where account=#{account}
+</select>
+
+<select id="getProfessors" resultMap="get_professor_user">
+select * from professor p,users u where p.account=u.account
+</select>
+
+<insert id="insertProfessor" parameterType="com.team.model.Professor">
+insert into professor value(#{account},#{introduction})
+</insert>
+
+<update id="updateProfessor" parameterType="com.team.model.Professor">
+update professor set introduction=#{introduction} where account=#{account}
+
+</update>
+
+<resultMap type="com.team.model.Professor" id="get_professor_user">
+<id property="account" column="account"/>
+<result property="introduction" column="introduction"/>
+<association property="user" column="account" javaType="com.team.model.Users">
+<id property="account" column="account"/>
+<result property="name" column="name"/>
+<result property="tx_src" column="tx_src"/>
+</association>
+</resultMap>
+
 </mapper>

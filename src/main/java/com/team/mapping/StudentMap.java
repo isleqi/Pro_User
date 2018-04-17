@@ -12,5 +12,7 @@ public interface StudentMap {
 	
 	public void insertStudent(Student student);
 	
+	public void updateStudent(Student student);
+	
 
 }

@@ -13,4 +13,8 @@ insert into users values(#{account},#{name},#{password},#{industry},#{phone},#{t
 delete from users where account=#{account}
 </delete>
 
+<update id="update_account">
+update users set name=#{name},industry=#{industry},phone=#{phone},tx_src=#{tx_src} where account=#{account}
+</update>
+
 </mapper>

@@ -25,5 +25,13 @@ public class Demand_list {
 		return ans;
         
 	}
+	
+	public ArrayList<Demand> get_demand_account(String account){
+		return demandmap.get_demand_account(account);
+	}
+	
+	public Demand get_demand_id(int demand_id) {
+		return demandmap.get_demand_id(demand_id);
+	}
 
 }

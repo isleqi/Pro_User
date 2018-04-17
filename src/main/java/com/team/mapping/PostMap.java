@@ -23,5 +23,7 @@ public interface PostMap {
 	public ArrayList<Reply> get_replys(int comment_id);
 	
 	public void insert_reply(Reply reply);
+	
+	public void delete_post(int post_id);
 
 }

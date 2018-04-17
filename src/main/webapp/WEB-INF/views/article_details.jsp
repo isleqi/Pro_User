@@ -8,6 +8,8 @@
    
     
     <script src="js/mlink.min.js"></script>
+            <script src="js/jquery.js"></script>
+    
 
     
     
@@ -52,7 +54,7 @@ display: block;
 
 </style>
     
-
+    
 </head>
 <%!String url; %>
 <%url=(String)request.getAttribute("url");%>
@@ -113,7 +115,7 @@ display: block;
         </ul>
         <div class="header-setting">
             
-          
+          <input type="hidden" id="article_id" value=${requestScope.article_id}>
             <%if(session.getAttribute("account")!=null) {%>
                  <div  class="zone" style="display: inline-block;">
                  <a href="zone" >${sessionScope.name}</a>
@@ -162,9 +164,8 @@ display: block;
     </div>
 </div>
   
-<div class="content" style="margin-top: 80px;margin-bottom: 100px">
-    
-
+<div class="content" style="margin-top: 80px;margin-bottom: 100px;padding-left: 50px">
+ 
    
 </div>
 
@@ -190,64 +191,63 @@ var current_user = {"avatar": "//media.zaih.com/Fh8J1Fi5s-dN1IasJlJ12wpJKOsa", "
 <script src="js/jquery-1.7.2.min.js"></script>
 <script src="js/8e026d0f.topicList.js"></script>
   
+<script>
 
- <script>
- var currentpage=1;
- var type_url;
- var type;
- var temp;
- 
-$(document).ready(function (){
-	 var elem=document.getElementById('view');
-     elem.className="";
-     elem=document.getElementById('huoqu');
-     elem.className="active";
-     elem=document.getElementById('professor');
-     elem.className="";
-     elem=document.getElementById('demand');
-     elem.className="";
-     elem=document.getElementById('forum');
-     elem.className="";
-	var url=$("#url").val();
-	var json={'url':url};
-	$.ajax({
-                data:json,
-                url:'get_news_details',
+    $(document).ready(function(){
+    	 var elem=document.getElementById('view');
+         elem.className="active";
+         elem=document.getElementById('huoqu');
+         elem.className="";
+         elem=document.getElementById('professor');
+         elem.className="";
+         elem=document.getElementById('demand');
+         elem.className="";
+         elem=document.getElementById('forum');
+         elem.className="";
+        
+         var id=$('#article_id').val();
+         var json={'article_id':id};
+      
+         $.ajax({
+             url:'get_article_details',
+             data:json,
+             dataType: "json",
+             type:"post",
+             success:function(data){
+                    // alert(JSON.stringify(data));
+
+                     var item='<div style="font-size: 25px;font-weight: bolder;">'
+                         +data.title+'</div><div style="font-size: 15px;color: gray;margin-top: 20px;margin-bottom: 20px">'
+                         +data.date+'&nbsp;&nbsp;&nbsp;'
+                         +data.user.name+'</div><div style="font-size: 20px">'
+                         +data.content+'</div>';
+
+                     $('.content').html(item);
+                         
+
+                 }
+
+
+             });
+
+        }); 
+
+    function out(){
+        $.ajax({
+                url:"out",
                 dataType: "text",
                 type:"post",
                 success:function(data){
-                   $(".content").html(data);
-                   var dl=document.getElementsByClassName("mt2")[0];
-                   var img=dl.getElementsByTagName("img");
-                   for(var i=0;i<img.length;i++)
-                       {
-                	   var before=img[i].getAttribute("src");
-                       //alert(before);
-                       img[i].setAttribute("src", "http://www.chinairn.com"+before);
-
-                       }
-                  
-                   
+                           alert(data);
+                           top.location.href="index.jsp"; 
 
                     }
+            });
+    }
 
-		});
-});
+    </script>
 
-function out(){
-    $.ajax({
-            url:"out",
-            dataType: "text",
-            type:"post",
-            success:function(data){
-                       alert(data);
-                       top.location.href="index.jsp"; 
-
-                }
-        });
-}
-
-</script>
+ 
 
 <!-- end scripts -->
 

@@ -6,12 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <title>论坛</title>
-  <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/common.js?v=3"></script>
-    <script type="text/javascript" src="js/default.js?v=1"></script>
-    <script type="text/javascript" src="js/lrz.all.bundle.js"></script>
-           
-        
+   
+    
+    <script src="js/mlink.min.js"></script>
+        <script src="js/jquery.js"></script>
             <script src="js/change.js"></script>
     
 <!-- <link rel="stylesheet" href="css/default.min.css">
@@ -79,18 +77,38 @@ $(document).ready(function(){
          var account =$('#account').val();
          var json={'account':account};
          $.ajax({
+                    url:'get_zone2',
+                    data:json,
+                    dataType: "json",
+                    type:'post',
+                    success:function(data){
+                        
+                          if(data.phone==null)
+                              data.phone='';
+                          if(data.jianjie==null)
+                              data.jianjie='';
+                          if(data.hangye==null)
+                              data.hangye='';
+                         $('#user_tx').attr("src",data.tx_src);
+                         $("#user_name").text(data.name);
+                         $("#user_phone").text("手机：  "+data.phone);
+                         $('#user_email').text("邮箱：  "+data.account);
+                         $('#user_jianjie').text("个人简介：   "+data.jianjie);
+                         $("#user_hangye").text("行业：   "+data.hangye);
+                        }
+             });
+         $.ajax({
                     url:'get_post_account',
                     data:json,
                    dataType: "json",
                    type:"post",
                    success:function (data){
-                             alert(JSON.stringify(data));
+                             //alert(JSON.stringify(data));
                              var item='<ul>';
                              for(var i=0;i<data.length;i++){
                                       item=item+'<li> <span class="" style="text-align: left"><a href=post_details?id='
                                       +data[i].id+' target="_blank" >'
-                                      +data[i].title+'</a></span><div class="remove" post-id='
-                                      +data[i].id+' style="float:right;margin-left:5px;cursor:pointer;"><a>删除</a></div><span class="" style="float: right;"><em data-bind="time" class="" >'
+                                      +data[i].title+'</a></span><span class="" style="float: right;"><em data-bind="time" class="" >'
                                       +data[i].date+'</em></span></li>';
 
                                  }
@@ -125,25 +143,11 @@ $(document).ready(function(){
 
              });
 
-         $("#changeInfo").on("click",function(){alert("cnm");$("#maskTop").css("display","");});
+     
         
          
     
      	
-});
-
-$(function(){
-    $("#childframe").on("load", function(event){
-        $("#cancel",this.contentDocument).click(/* function(){
-            $("#maskTop").css("display","none"); 
-        }*/
-
-                close);
-
-       // $("#change",this.contentDocument).click(change);
-        
-       
-    });
 });
 
 
@@ -169,7 +173,7 @@ $(function(){
                         for(var i=0;i<data.length;i++){
                                  item=item+'<li> <span class="" style="text-align: left"><a href=demand_details?id='
                                  +data[i].id+' target="_blank" >'
-                                 +data[i].title+'</a></span><div clsaa=".remove" style="float:right;margin-left:5px;cursor:pointer;"><a>删除</a></div><span class="" style="float: right;"><em data-bind="time" class="" >'
+                                 +data[i].title+'</a></span><span class="" style="float: right;"><em data-bind="time" class="" >'
                                  +data[i].date+'</em></span></li>';
 
                             }
@@ -185,10 +189,19 @@ $(function(){
 
  
 
-  function save(){
-          
+  function out(){
+      $.ajax({
+              url:"out",
+              dataType: "text",
+              type:"post",
+              success:function(data){
+                         alert(data);
+                         top.location.href="index.jsp"; 
 
-	  }
+                  }
+          });
+  }
+
 </script>
 </head>
 <body style="overflow-x: visible;">
@@ -236,7 +249,7 @@ $(function(){
             <%if(session.getAttribute("account")!=null) {%>
                  <div  class="zone" style="display: inline-block;">
                  <a href="zone" >${sessionScope.name}</a>
-                                  <input type="hidden" id="account" value=${sessionScope.account}>
+                                  <input type="hidden" id="account" value=${requestScope.account}>
                  
                
                  <div class="qq" style="text-align: center;">
@@ -284,19 +297,18 @@ $(function(){
 <div class="userinfo" style="margin: 70px auto 20px auto;max-width: 1000px;padding: 0 20px;display: table;">
 
 <a href="">
-<img src=${sessionScope.tx_src} style="height: 150px;width:150px;float: left;display: inline;">
+<img src="" style="height: 150px;width:150px;float: left;display: inline;" id="user_tx">
 </a>
 <div class="" style="float: left;display: inline;margin-left: 30px;word-wrap:break-word;width: 700px">
 
-<div style="display: inline;font-size: 30px;margin-top: 30px">${sessionScope.name}
+<div style="display: inline;font-size: 30px;margin-top: 30px" id="user_name">
 </div>
-<div style="display: inline;float:right;" id="changeInfo"><a>修改个人资料</a></div>
 
-<div class="" style="">行业:&nbsp;&nbsp;${sessionScope.industry} 
+<div class="" style="" id="user_hangye"> 
 </div>
-<div >手机:&nbsp;&nbsp;${sessionScope.phone}</div>
-<div>邮箱:&nbsp;&nbsp;${sessionScope.account}</div>
-<div class=".jianjie" style="">个人简介:&nbsp;&nbsp;${sessionScope.introduction}
+<div id="user_phone">手机:</div>
+<div id="user_email">邮箱:</div>
+<div class=".jianjie" style="" id="user_jianjie">
 <span class=""></span>
 
 </div>
@@ -306,8 +318,8 @@ $(function(){
 
 <div class="tab" style="margin: 0 auto;width: 900px">
 <ul>
-<li onclick="get_posts()" style="cursor: pointer;">我的帖子</li>&nbsp;&nbsp;&nbsp;&nbsp;
-<li onclick="get_demands()" style="cursor: pointer;">我的需求</li>
+<li onclick="get_posts()" style="cursor: pointer;">ta的帖子</li>&nbsp;&nbsp;&nbsp;&nbsp;
+<li onclick="get_demands()" style="cursor: pointer;">ta的需求</li>
 </ul>
 </div>
 

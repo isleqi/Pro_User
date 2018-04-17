@@ -2,7 +2,11 @@ package com.team.model;
 
 public class Student {
 	private String  account;
+	private String introduction;
 	
+	public Student() {
+		
+	}
 	
 	public Student(String account) {
 		this.account=account;
@@ -15,6 +19,12 @@ public class Student {
 		this.account=account;
 	}
 	
+	public String getIntroduction() {
+		return introduction;
+	}
+	public void setIntroduction(String introduction) {
+		this.introduction=introduction;
+	}
 	
 	
 

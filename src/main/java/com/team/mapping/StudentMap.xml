@@ -7,7 +7,11 @@ select * from student where account=#{account}
 </select>
 
 <insert id="insertStudent" parameterType="com.team.model.Student">
-insert into student value(#{account})
+insert into student(account) value(#{account})
 </insert>
+
+<update id="updateStudent" parameterType="com.team.model.Student">
+update student set introduction=#{introduction} where account=#{account}
+</update>
 
 </mapper>
